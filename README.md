@@ -1,3 +1,11 @@
+# Todo list
+1. switch metadata.js to metadata.yaml
+2. add subtitle to visible exterior
+3. title and subtitle visible on every page 
+
+* * * 
+# Theme
+
 # eleventy-simple
 
 A blog starter using [11ty](https://github.com/11ty/eleventy) and [Simple.css](https://github.com/kevquirk/simple.css). Based on [eleventy-base-blog](https://github.com/11ty/eleventy-base-blog)

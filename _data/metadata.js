@@ -1,5 +1,6 @@
 export default {
-	title: "Eleventy Base Blog v9",
+	title: "THE NEW POLIS",
+	subtitle: "A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology",
 	url: "https://example.com/",
 	language: "en",
 	description: "I am writing about my experiences as a naval navel-gazer.",
