@@ -5,8 +5,8 @@ bio:
 social: 
   - title: "Website"
     url: "https://example.com"
-    icon: fa-solidfa-link
+    icon: fa-solid fa-link
   - title: "ORCID"
     url: "https://orcid.org"
-    icon: fa-brandsfa-orcid  
+    icon: fa-brands fa-orcid  
 ---

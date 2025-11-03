@@ -1,12 +1,12 @@
 ---
-name: 
-organization: 
-bio:
+name: Jason Alvis
+organization: University of Vienna
+bio: "Jason Alvis is Senior Research Fellow in philosophy at the University of Vienna. He is the author of The Inconspicuous God: Heidegger, French Phenomenology, and the Theological Turn and Marion and Derrida on the Gift and Desire: Debating the Generosity of Things."
 social: 
   - title: "Website"
-    url: "https://example.com"
-    icon: fa-solidfa-link
-  - title: "ORCID"
-    url: "https://orcid.org"
-    icon: fa-brandsfa-orcid  
+    url: "https://jasonalvisblog.wordpress.com/"
+    icon: fa-solid fa-link
+  - title: "academia.edu"
+    url: "https://univie.academia.edu/JasonAlvis"
+    icon: fa-solid fa-building-columns  
 ---

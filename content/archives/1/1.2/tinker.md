@@ -1,5 +1,5 @@
 ---
-id: 07
+id: 06
 title: |
     REV. REZIN MONROE BARNS’ GIFT TO ILIFF: A TAINTED TROPHY AND THE FRAMING OF WHITE SUPREMACY IN AMERICA
 description: ""
@@ -8,6 +8,6 @@ issue: 2
 Season: Fall
 Year: 2022
 authors: 
-pdf:  /archives/1.2/
+pdf:  /archives/1.2/Tinker.pdf
 citation_file: 
 ---

@@ -1,7 +1,7 @@
 ---
-id: 03
+id: 07
 title: |
-    
+    Author Bios
 description: ""
 volume: 1
 issue: 2

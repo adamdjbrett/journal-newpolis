@@ -1,5 +1,5 @@
 ---
-id: 03
+id: 02
 title: |
     A “DIFFICULT DISCUSSION”: CHRISTIAN EVANGELICALISM AND CRITICAL RACE THEORY
 description: ""
