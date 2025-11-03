@@ -1,5 +1,5 @@
 ---
-Name:
+name:
 organization:
 bio:
  social: 

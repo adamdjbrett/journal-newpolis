@@ -1,5 +1,5 @@
 ---
-Name: Brendan John Brown
+name: Brendan John Brown
 organization: New School for Social Research
 bio:
  social: 

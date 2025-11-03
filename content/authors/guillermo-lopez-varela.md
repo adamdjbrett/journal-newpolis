@@ -1,5 +1,5 @@
 ---
-name: Tink Tinker
+name: Guillermo López Varela
 organization:
 bio:
  social: 

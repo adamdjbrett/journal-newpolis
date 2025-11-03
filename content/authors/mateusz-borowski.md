@@ -1,5 +1,5 @@
 ---
-Name: Mateusz Borowski
+name: Mateusz Borowski
 organization: Jagiellonian University
 bio:
  social: 

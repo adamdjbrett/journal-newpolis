@@ -1,5 +1,5 @@
 ---
-name: Tink Tinker
+name: Maria Cristina Manzano-Munguía
 organization:
 bio:
  social: 

@@ -1,5 +1,5 @@
 ---
-Name: Roger Green
+name: Roger Green
 organization: Metropolitan State University of Denver
 bio:
  social: 

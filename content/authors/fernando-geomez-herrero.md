@@ -1,5 +1,5 @@
 ---
-Name: "Fernando Gómez Herrero"
+name: "Fernando Gómez Herrero"
 organization: "Birkbeck College, London"
 bio:
  social: 
