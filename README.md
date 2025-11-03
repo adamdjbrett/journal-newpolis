@@ -2,6 +2,8 @@
 1. switch metadata.js to metadata.yaml
 2. add subtitle to visible exterior
 3. title and subtitle visible on every page 
+4. sort by ``id`` on index.md for all ```.md``` in the folder
+5. add passthrough for ```.pdf```
 
 * * * 
 # Theme

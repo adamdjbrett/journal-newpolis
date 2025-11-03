@@ -1,4 +1,5 @@
 ---
+id:
 title: |
     WHAT DO WE MEAN BY "DECOLONIALITY"?
 description: ""
@@ -10,10 +11,4 @@ authors:
 pdf:  /archives/1.1/WhatDoWeMeanByDecolonialitydocx.pdf
 citation: 
 ---
-
-
-[WHAT DO WE MEAN BY "DECOLONIALITY"?](http://journal.thenewpolis.com/archives/1.1/WhatDoWeMeanByDecolonialitydocx.pdf)
-
-[A DISCUSSION](http://journal.thenewpolis.com/archives/1.1/WhatDoWeMeanByDecolonialitydocx.pdf)
-
 Walter Mignolo, Catherine Walsh, Tink Tinker, Fernando Gómez Herrero

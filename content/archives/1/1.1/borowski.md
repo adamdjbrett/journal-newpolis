@@ -1,18 +1,14 @@
 ---
+id:
 title: |
-    BATMAN
+    KNOWING WITH THE CITY: SUBVERTING COGNITIVE EMPIRES THROUGH SPECULATIVE FICTION
 description: ""
 volume: 1
 issue: 1
 Season: Winter
 Year: 2022
-authors: 
-pdf:  /archives/1.1/
+authors: mateusz-borowski
+pdf:  /archives/1.1/Borowski.pdf
 citation: 
 ---
-[KNOWING WITH THE CITY: SUBVERTING COGNITIVE EMPIRES](http://journal.thenewpolis.com/archives/1.1/Borowski.pdf)
-
-[THROUGH SPECULATIVE FICTION](http://journal.thenewpolis.com/archives/1.1/Borowski.pdf)
-
-Mateusz Borowski, Jagiellonian University
 
