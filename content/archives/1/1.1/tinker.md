@@ -1,5 +1,5 @@
 ---
-id:
+id: 02
 title: |
     THE COLONIAL COMPROMISE: A PANEL DISCUSSION
 description: ""
@@ -7,10 +7,7 @@ volume: 1
 issue: 1
 Season: Winter
 Year: 2022
-authors: 
+authors: tink-tinker, ward-churchill, miguel-de-la-torre, natsu-taylor-saito, roger-green
 pdf:  /archives/1.1/Tinker.pdf
-citation: 
+citation_file: 
 ---
-[THE COLONIAL COMPROMISE: A PANEL DISCUSSION](http://journal.thenewpolis.com/archives/1.1/Tinker.pdf)
-
-Tink Tinker, Ward Churchill, Miguel de la Torre, Natsu Taylor Saito, Roger Green

@@ -1,5 +1,5 @@
 ---
-id:
+id: 08
 title: |
     IS SCOTLAND A COLONY? THE WESTERN COGNITIVE EMPIRE AND THE RHETORIC OF COLONIALISM
 description: ""
@@ -9,8 +9,5 @@ Season: Winter
 Year: 2022
 authors: richard-saville-smith
 pdf:  /archives/1.1/Saville-Smith.pdf
-citation: 
+citation_file: 
 ---
-
-
-Richard Saville-Smith

@@ -10,5 +10,5 @@ Season: Winter
 Year: 2022
 authors: brendan-john-brown
 pdf:  /archives/1.1/
-citation: 
+citation_file: 
 ---

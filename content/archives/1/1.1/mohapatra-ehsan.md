@@ -1,5 +1,5 @@
 ---
-id:
+id: 07
 title: |
     RECONSTRUCTING DIVERSAL ONTOLOGIES: UNLEARNING AS A METHODOLOGY OF DECOLONIAL LIVING
 description: ""
@@ -9,5 +9,5 @@ Season: Winter
 Year: 2022
 authors: magna-mohapatra, zunayd-ahmed-ehsan
 pdf:  /archives/1.1/Mohapatra-Ehsan.pdf
-citation: 
+citation_file: 
 ---

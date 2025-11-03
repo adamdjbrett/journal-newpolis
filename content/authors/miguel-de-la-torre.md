@@ -5,9 +5,9 @@ bio:
  social: 
   - title: "Website"
     url: "https://example.com"
-    icon: fa fa-link
+    icon: fa-solidfa-link
   - title: "ORCID"
     url: "https://orcid.org"
-    icon: fab fa-orcid  
+    icon: fa-brandsfa-orcid  
 ---
 Miguel de la Torre
