@@ -6,7 +6,7 @@ social:
   - title: "Website"
     url: "https://jasonalvisblog.wordpress.com/"
     icon: fa-solid fa-link
-  - title: "academia.edu"
+  - title: "Academia"
     url: "https://univie.academia.edu/JasonAlvis"
     icon: fa-solid fa-building-columns  
 ---

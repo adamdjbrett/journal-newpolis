@@ -1,13 +1,9 @@
 ---
-name:
-organization:
+name: Ward Churchill
+organization: Independent Secholar
 bio:
 social: 
   - title: "Website"
-    url: "https://example.com"
+    url: "https://wardchurchill.net/"
     icon: fa-solid fa-link
-  - title: "ORCID"
-    url: "https://orcid.org"
-    icon: fa-brands fa-orcid  
 ---
-Ward Churchill

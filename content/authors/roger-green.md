@@ -4,9 +4,6 @@ organization: Metropolitan State University of Denver
 bio:
 social: 
   - title: "Website"
-    url: "https://example.com"
+    url: "https://msudenver.academia.edu/RogerGreen"
     icon: fa-solid fa-link
-  - title: "ORCID"
-    url: "https://orcid.org"
-    icon: fa-brands fa-orcid  
 ---

@@ -6,7 +6,4 @@ social:
   - title: "Website"
     url: "https://www.iliff.edu/faculty/tink-tinker/"
     icon: fa-solid fa-link
-  - title: "ORCID"
-    url: "https://orcid.org"
-    icon: fa-brands fa-orcid  
 ---
