@@ -2,7 +2,7 @@
 name: "Fernando Gómez Herrero"
 organization: "Birkbeck College, London"
 bio:
- social: 
+social: 
   - title: "Website"
     url: "https://example.com"
     icon: fa-solidfa-link

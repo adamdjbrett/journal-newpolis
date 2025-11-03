@@ -1,0 +1,13 @@
+---
+id: 05
+title: |
+    DEMOGRAPHICS AND DECULTURATION: OLIVIER ROY AND THE CONTROVRERSY OVER RELIGIOUS NATALISM
+description: ""
+volume: 1
+issue: 2
+Season: Fall
+Year: 2022
+authors: joshua-ramos
+pdf:  /archives/1.2/
+citation_file: 
+---

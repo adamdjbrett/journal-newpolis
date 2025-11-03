@@ -1,6 +1,6 @@
 ---
-name: Brendan John Brown
-organization: New School for Social Research
+name: 
+organization: 
 bio:
 social: 
   - title: "Website"

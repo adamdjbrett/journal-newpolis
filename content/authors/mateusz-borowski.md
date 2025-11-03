@@ -2,7 +2,7 @@
 name: Mateusz Borowski
 organization: Jagiellonian University
 bio:
- social: 
+social: 
   - title: "Website"
     url: "https://example.com"
     icon: fa-solidfa-link

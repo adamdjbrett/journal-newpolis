@@ -2,7 +2,7 @@
 name: Roger Green
 organization: Metropolitan State University of Denver
 bio:
- social: 
+social: 
   - title: "Website"
     url: "https://example.com"
     icon: fa-solidfa-link
