@@ -75,7 +75,7 @@ export default async function(eleventyConfig) {
 			language: "en",
 			title: "Blog Title",
 			subtitle: "This is a longer description about your blog.",
-			base: "https://example.com/",
+			base: "http://localhost:8080/",
 			author: {
 				name: "Your Name"
 			}
@@ -105,6 +105,25 @@ export default async function(eleventyConfig) {
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
+
+	// Collections
+	eleventyConfig.addCollection("authors", function(collectionApi) {
+		return collectionApi.getFilteredByGlob("content/authors/*.md").sort((a, b) => {
+			const an = (a.data.name || a.id || "").toLowerCase();
+			const bn = (b.data.name || b.id || "").toLowerCase();
+			return an.localeCompare(bn);
+		});
+	});
+
+	// Passthrough copy for static assets in archives (e.g., PDFs)
+	// This preserves folder structure under /archives in the output
+	eleventyConfig.addPassthroughCopy({ "content/archives": "archives" });
+	// Explicitly ensure all PDFs under /archives are copied (input dir is `content`)
+	eleventyConfig.addPassthroughCopy("archives/**/*.pdf");
+
+	eleventyConfig.addCollection("archivesIndex", function(collectionApi) {
+		return collectionApi.getFilteredByGlob("content/archives/**/index.md");
+	});
 
 	eleventyConfig.addPlugin(IdAttributePlugin, {
 		// by default we use Eleventy’s built-in `slugify` filter:

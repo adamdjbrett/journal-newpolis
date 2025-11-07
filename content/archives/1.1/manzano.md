@@ -5,9 +5,9 @@ title: |
 description: ""
 volume: 1
 issue: 1
-Season: Winter
-Year: 2022
-authors: maria-cristina-manzano-munguía, guillermo-lópez-varela
+season: Winter
+year: 2022
+authors: maria-cristina-manzano-munguia, guillermo-lopez-varela
 pdf:  /archives/1.1/
 citation_file: 
 ---

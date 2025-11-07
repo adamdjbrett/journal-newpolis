@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+---
+<article class="article">
+  <header class="article-header">
+    <h1>{{ title }}</h1>
+    
+    {% if authors %}
+      <p class="article-authors">
+        {{ authors | authorsToLinks(collections.authors) | safe }}
+      </p>
+    {% endif %}
+
+    {% if description %}
+      <div class="article-description">
+        {{ description | markdownify | safe }}
+      </div>
+    {% endif %}
+    {% if pdf %}
+        <div class="meta-item">
+          <strong>PDF:</strong> <a href="{{ pdf }}" target="_blank" rel="noopener noreferrer">Download PDF</a>
+        </div>
+      {% endif %}
+  </header>
+
+  <div class="article-content">
+    {{ content | safe }}
+  </div>
+<h2>Citation Information</h2>
+    <div class="article-meta">
+        <div class="meta-item">
+          {% if authors %}{{ authors | authorsToNames(collections.authors) }}{% endif %}, &lsquo;{{ title }}&rsquo;, <em>{{ metadata.title }}</em>, <em>{{ metadata.subtitle }}</em>, {{ volume }}({{ issue }}), {{ year }}{% if season %}, {{ season }}{% endif %}, <a href="{{ pdf }}" target="_blank" rel="noopener noreferrer">{{metadata.url}}{{ pdf }}</a>.
+        </div>
+    </div>
+    
+  {% if citation_file %}
+  <h3>Citation Download</h3>
+    <footer class="article-footer">
+      <div class="article-citation-info">
+        <a href="{{ citation_file }}" download>Download Citation</a>
+      </div>
+    </footer>
+  {% endif %}
+</article>

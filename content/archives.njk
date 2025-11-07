@@ -1,15 +1,15 @@
 ---js
 const eleventyNavigation = {
-  key: "Home",
-  order: 1
+  key: "Issues",
+  order: 5
 };
 ---
 <h1>Journal Issues</h1>
 
-<ul style="list-style-type: none;">
+<ul>
 {%- for issue in collections.archivesIndex %}
   <li>
-    <h2><a href="{{ issue.url }}">{{ issue.data.title or issue.url }}</a></h2>
+    <a href="{{ issue.url }}">{{ issue.data.title or issue.url }}</a>
   </li>
 {%- endfor %}
 </ul>

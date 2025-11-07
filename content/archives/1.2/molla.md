@@ -5,8 +5,8 @@ title: |
 description: ""
 volume: 1
 issue: 2
-Season: Fall
-Year: 2022
+season: Fall
+year: 2022
 authors: rode-molla
 pdf:  /archives/1.2/Molla.pdf
 citation_file: 

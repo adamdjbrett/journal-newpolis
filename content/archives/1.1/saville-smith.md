@@ -5,8 +5,8 @@ title: |
 description: ""
 volume: 1
 issue: 1
-Season: Winter
-Year: 2022
+season: Winter
+year: 2022
 authors: richard-saville-smith
 pdf:  /archives/1.1/Saville-Smith.pdf
 citation_file: 

@@ -4,7 +4,8 @@ const pagination = {
 	data: "collections",
 	size: 1,
 	alias: "tag",
-	filter: ["all", "posts"],
+	// Exclude internal/custom collections that are not user-defined tags
+	filter: ["all", "posts", "authors", "archivesIndex"],
 	// addAllPagesToCollections: true,
 };
 

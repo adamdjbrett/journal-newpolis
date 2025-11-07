@@ -5,8 +5,8 @@ title: |
 description: "G. John Ikenberry is one proper name, one among others, of the “disintegration of the Western Cognitive Empire” in the dramatic language of the conference in which I played a double role (The New Polis, April 14–16, 2021). His is an unwitting disintegration of such “West” in its American style inside International Relations (IR) domains, although the big civilizational category of “West” always needs a serious interrogation that must convene its European and Latin American counterparts, and some of it is included in what follows. I focus on the Anglo Zone (the U.S. and the U.K.) as the still hegemonic power/knowledge in the world having some troubles, as the recent events in Afghanistan make clear. In this conference, I joined the panel discussion with Walter\ Mignolo, Catherine Walsh and Tink Tinker.¹ A first elaboration of my thoughts in this discussion should accompany this second elaboration of my singular presentation apropos this noted neo- Wilsonian representative of the liberal school of Foreign Affairs strutting his stuff in high places.² Mine is a “foreign-humanities” engagement, coming from the pitch-thick blind spot, call it “Hispanic” if you wish. I am to show some of the clear shortcomings informing what I will defending is a deleterious internationalism with the U.S. on top until the end of time. Uneven demarcations of meaningful timespaces will be summoned. Sovereignties (who decides, who owns and owes what to whom) too. I say a few things about “decoloniality” (a category Ikenberry ignores) in the end too. On the discussion table, the situation of bringing down the Goliath of a certain American normality operating in the official social sciences."
 volume: 1
 issue: 1
-Season: Winter
-Year: 2022
+season: Winter
+year: 2022
 authors: fernando-gomez-herrero
 pdf:  /archives/1.1/Herrero.pdf
 citation_file: 

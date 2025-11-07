@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+---
+<article class="archive">
+  <header class="archive-header">
+    <h1>{{ title or page.fileSlug | title }}</h1>
+    {% if subtitle %}
+      <p class="archive-subtitle">{{ subtitle }}</p>
+    {% endif %}
+    {% if image %}
+      <figure class="archive-image">
+        <img eleventy:ignore src="{{ image }}" alt="{{ (description or subtitle or title) | escape }}">
+      </figure>
+    {% endif %}
+    {% if description %}
+      <div class="archive-description">{{ description | markdownify | safe }}</div>
+    {% endif %}
+    <p class="archive-meta">
+      {# Display volume, issue, season, year in a horizontal line #}
+      {% if volume %}Vol. {{ volume }}{% endif %}
+      {% if volume and (issue or Season or Year) %} · {% endif %}
+      {% if issue %}No. {{ issue }}{% endif %}
+      {% if (issue or volume) and (Season or Year) %} · {% endif %}
+      {% if Season %}{{ Season }}{% endif %}
+      {% if Season and Year %} {{ Year }}{% elseif Year %}{{ Year }}{% endif %}
+    </p>
+  </header>
+
+  {{ content | safe }}
+
+  {# Automatically list sibling entries for issue index pages #}
+  {% if page.inputPath and page.inputPath.endsWith('/index.md') %}
+    {% set folder = page.inputPath | replace('/index.md', '/') %}
+    {% set entries = collections.all | byFolder(folder) | sortByData('id') %}
+    {% if entries and entries.length %}
+      <h2>Contents</h2>
+      <ol>
+      {%- for item in entries %}
+        <li>
+          
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+          {%- if item.data.authors %} <em>— {{ item.data.authors | authorsToLinks(collections.authors) | safe }}</em>{% endif -%}
+        </li>
+      {%- endfor %}
+      </ol>
+    {% endif %}
+  {% endif %}
+</article>

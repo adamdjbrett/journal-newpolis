@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+---
+<article class="author">
+  <h1>{{ name or title }}</h1>
+  {% if organization %}<p class="author-org">{{ organization }}</p>{% endif %}
+  {% if bio %}<div class="author-bio">{{ bio | safe }}</div>{% endif %}
+
+  {% if social and social.length %}
+  <h2>Links</h2>
+  <ul>
+    {%- for s in social %}
+      <li>
+        <a href="{{ s.url }}">{{ s.title }}</a>
+      </li>
+    {%- endfor %}
+  </ul>
+  {% endif %}
+
+  {# List all articles by this author #}
+  {% set akey = key or page.fileSlug %}
+  {% set archiveItems = collections.all | byFolder('content/archives') %}
+  {% set hasAny = false %}
+  <h2>Articles by {{ name or title }}</h2>
+  <ul>
+    {%- for p in archiveItems %}
+      {%- if p.data.authors -%}
+        {%- set keys = p.data.authors | authorsToArray -%}
+        {%- if akey in keys -%}
+          {%- set hasAny = true -%}
+          <li>
+            <a href="{{ p.url }}">{{ p.data.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor %}
+  </ul>
+  {% if not hasAny %}
+    <p><em>No articles found for this author yet.</em></p>
+  {% endif %}
+</article>
