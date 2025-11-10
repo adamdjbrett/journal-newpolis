@@ -7,3 +7,214 @@
 	white-space: nowrap;
 	width: 1px;
 }
+
+body, html {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1140px;
+    overflow-x: hidden; 
+}
+
+#main {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto; 
+    padding: 10px 15px;
+}
+
+#main * {
+    text-align: initial;
+}
+
+.navbars-container {
+    height: 30vh;
+    margin: 0 auto;
+    max-width: 1140px;
+    background-image: 
+        linear-gradient(to right, rgba(26, 42, 108, 0.7), rgba(178, 31, 31, 0.7)),
+        url('/img/bg/future-1751262.svg');        
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top -280px;
+    color: white; 
+    padding: 30px 5%;
+    position: relative;
+    
+    transition: all 0.5s ease-in-out; 
+}
+
+.top-info {
+    text-align: right;
+    padding: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+}
+
+.title-overlay {
+    background-color: rgba(149, 71, 28, 0.7);
+    padding: 30px 20px;
+    margin: 0 5%;
+}
+
+.journal-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+}
+
+
+.title-overlay {
+    margin: 0 30px;
+}
+.top-info {
+    padding-right: 30px;
+}
+.nav-menu {
+    padding-right: 30px;
+}
+.my-nav {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    justify-content: right;
+    display: flex;
+}
+
+.my-nav-item {
+    border: none !important;
+    box-shadow: none !important;
+    margin-right: 20px; 
+}
+
+.my-nav-item a {
+    text-decoration: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 5px 10px;
+}
+
+.my-nav-item a[aria-current="page"] {
+    font-weight: bold !important;
+    color: #e2e7ec !important;
+    border: none !important;
+}
+
+
+.footer-grid-container {
+    background-color: #333;
+    color: #fff;
+    padding: 0 30px 5px 30px;
+    border-top: 1px solid rgba(231, 226, 226, 0.4);
+}
+.mt-5 {margin-top: 20px;}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 30px;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 8px;
+}
+
+.footer-col h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #555;
+    padding-bottom: 5px;
+}
+
+.footer-col p, .footer-col li {
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 40px;
+    }
+}
+
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    font-size: 0.8em;
+    color: #ccc;
+}
+
+.none {text-decoration: none;}
+.text-white, a.text-white {color: white !important;}
+.bg-white {background-color: #e2e7ec color:#555;}
+
+#search .pagefind-ui__result {
+    background-color: #ffe0b2 !important; 
+    color: #333333 !important; 
+    border: 1px solid #ffcc80;
+    margin-bottom: 5px;
+}
+
+#search .pagefind-ui__result-excerpt {
+    color: #555555 !important;
+}
+
+#search .pagefind-ui__result-link {
+    color: #5d310b !important; 
+}
+
+@media (max-width: 400px) {
+    .navbars-container {
+        height: auto; 
+        padding: 15px; 
+    }
+
+    .my-nav {
+        justify-content: center;
+        text-align: center;
+        padding-top: 10px !important;
+    }
+    
+    .my-nav-item {
+        margin-right: 8px;
+        margin-left: 8px;
+        margin-bottom: 5px;
+    }
+    
+    .top-info {
+        text-align: left;
+        padding: 0 0 10px 0;
+    }
+
+    .title-overlay {
+        margin: 0;
+        padding: 15px;
+    }
+}
+
+

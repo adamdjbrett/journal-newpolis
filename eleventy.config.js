@@ -3,9 +3,11 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-
+import yaml from "js-yaml";
+import markdownIt from "markdown-it";
+import markdownItAnchor from "markdown-it-anchor";
 import pluginFilters from "./_config/filters.js";
-
+import { execSync } from "child_process";
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
 	// Drafts, see also _data/eleventyDataSchema.js
@@ -14,7 +16,7 @@ export default async function(eleventyConfig) {
 			return false;
 		}
 	});
-
+eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig
@@ -53,10 +55,34 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 }
 	});
+	const md = new markdownIt({
+		html: true,
+		breaks: true,
+		linkify: true,
+	});
+	eleventyConfig.addFilter("md", function (content) {
+		return md.render(content);
+	});
+
+  let options = {
+    html: true,
+    breaks: true,
+    linkify: true,
+      permalink: true,
+    typographer: true,
+      permalinkClass: "direct-link",
+      permalinkSymbol: "#"
+  };
+	
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
+	eleventyConfig.on("eleventy.after", () => {
+		execSync(`npx pagefind --site _site --glob \"**/*.html\"`, {
+			encoding: "utf-8",
+		});
+	});
 	eleventyConfig.addPlugin(feedPlugin, {
 		type: "atom", // or "rss", "json"
 		outputPath: "/feed/feed.xml",

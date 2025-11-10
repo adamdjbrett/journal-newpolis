@@ -1,8 +1,7 @@
----js
-const eleventyNavigation = {
-	key: "Submissions",
-	order: 4
-};
+---
+title: Submissions
+description: How to Submit
+permalink: /submissions/
 ---
 Submissions
 -----------

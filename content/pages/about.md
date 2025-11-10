@@ -1,8 +1,7 @@
----js
-const eleventyNavigation = {
-	key: "About",
-	order: 2
-};
+---
+title: About
+description: About Us
+permalink: /about/
 ---
 *The New Polis* is  offered by [The Whitestone Foundation ](http://thewhitestonefoundation.org/)dba Whitestone Publications, a 501(c)3 non-profit organization registered in the state of Colorado.
 

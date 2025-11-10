@@ -1,8 +1,6 @@
----js
-const eleventyNavigation = {
-  key: "Home",
-  order: 1
-};
+---
+title: Journal Issues
+description: Journal Issues Polis
 ---
 <h1>Journal Issues</h1>
 

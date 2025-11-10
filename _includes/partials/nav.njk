@@ -1,0 +1,25 @@
+<header class="navbars-container">
+        <div class="top-info">
+            <a class="none text-white" href="{{metadata.url}}">{{metadata.navbar.title}}</a>
+        </div>
+
+        <div class="title-overlay">
+            <h1 class="journal-title">
+                {{metadata.navbar.description}}
+            </h1>
+        </div>
+
+        <nav class="main-menu">
+            	<ul class="my-nav">
+    {% for n in metadata.navbar.list %}
+        <li class="my-nav-item">
+            <a href="{{ n.url }}">
+                {{ n.nav }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+        </nav>
+    </header>
+
+<header>

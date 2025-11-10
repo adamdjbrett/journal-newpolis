@@ -1,0 +1,181 @@
+backend:
+  name: github
+  repo: adamdjbrett/journal-newpolis
+  branch: main
+
+# The folder used to store uploaded images
+media_folder: "public/img"
+
+editor:
+  preview: false
+
+collections:
+  - name: "metadata"
+    label: "Site Metadata"
+    format: "yaml"
+    files:
+      - file: "_data/metadata.yaml"
+        label: "Metadata"
+        name: "metadata"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+          - { label: "URL", name: "url", widget: "string", required: false }
+          - { label: "Language", name: "language", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "string", required: false }
+          - { label: "Favicon", name: "favicon", widget: "image", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - label: "Navbar"
+            name: "navbar"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "string", required: false }
+              - label: "List"
+                name: "list"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Nav", name: "nav", widget: "string", required: false }
+                  - { label: "URL", name: "url", widget: "string", required: false }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - label: "Nav1"
+                name: "nav1"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - label: "Info"
+                    name: "info"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { label: "Text", name: "text", widget: "string", required: false }
+                  - label: "List"
+                    name: "list"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { label: "Nav", name: "nav", widget: "string", required: false }
+                      - { label: "URL", name: "url", widget: "string", required: false }
+              - label: "Nav2"
+                name: "nav2"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - label: "List"
+                    name: "list"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { label: "Nav", name: "nav", widget: "string", required: false }
+                      - { label: "URL", name: "url", widget: "string", required: false }
+              - label: "Nav3"
+                name: "nav3"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - label: "List"
+                    name: "list"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { label: "Nav", name: "nav", widget: "string", required: false }
+                      - { label: "Text", name: "text", widget: "string", required: false }
+                      - { label: "URL", name: "url", widget: "string", required: false }
+          - { label: "Copyrights", name: "copyrights", widget: "string", required: false }
+          - label: "Author"
+            name: "author"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "URL", name: "url", widget: "string", required: false }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "string", required: false }
+      - { label: "Permalink", name: "permalink", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "string", required: false }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+  - name: "index"
+    label: "Index Page"
+    files:
+      - file: "content/index.md"
+        label: "Index Page Content"
+        name: "index"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown", required: false }
+
+
+  - name: "authors"
+    label: "Authors"
+    folder: "content/authors"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string", required: false }
+      - { label: "Organization", name: "organization", widget: "string", required: false }
+      - { label: "Bio", name: "bio", widget: "markdown", required: false }
+      - label: "Social Links"
+        name: "social"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "URL", name: "url", widget: "string", required: false }
+          - { label: "Icon", name: "icon", widget: "string", required: false }
+
+  - name: "archives_1_1"
+    label: "Archives 1.1"
+    folder: "content/archives/1.1"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string", required: false }
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "string", required: false }
+      - { label: "Volume", name: "volume", widget: "number", required: false }
+      - { label: "Issue", name: "issue", widget: "number", required: false }
+      - { label: "Season", name: "season", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "number", required: false }
+      - { label: "Authors", name: "authors", widget: "string", required: false }
+      - { label: "PDF", name: "pdf", widget: "file", required: false }
+      - { label: "Citation File", name: "citation_file", widget: "file", required: false }
+  - name: "archives_1_2"
+    label: "Archives 1.2"
+    folder: "content/archives/1.2"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string", required: false }
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "string", required: false }
+      - { label: "Volume", name: "volume", widget: "number", required: false }
+      - { label: "Issue", name: "issue", widget: "number", required: false }
+      - { label: "Season", name: "season", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "number", required: false }
+      - { label: "Authors", name: "authors", widget: "string", required: false }
+      - { label: "PDF", name: "pdf", widget: "file", required: false }
+      - { label: "Citation File", name: "citation_file", widget: "file", required: false }
+
+
