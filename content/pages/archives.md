@@ -1,8 +1,7 @@
----js
-const eleventyNavigation = {
-  key: "Issues",
-  order: 5
-};
+---
+title: Journal Issues
+description: Journal Issues Description
+permalink: /archives/
 ---
 <h1>Journal Issues</h1>
 

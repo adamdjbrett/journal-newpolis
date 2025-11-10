@@ -1,8 +1,7 @@
----js
-const eleventyNavigation = {
-	key: "Editors",
-	order: 3
-};
+---
+title: Editors
+description: Editor New Polis
+permalink: /editors/
 ---
 Editors
 -------
