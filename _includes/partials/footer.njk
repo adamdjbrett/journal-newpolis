@@ -14,7 +14,7 @@
         <div class="footer-col footer-services">
             <h3>{{metadata.footer.nav3.title}}</h3>
             <ul>
-                {% for z in metadata.footer.nav3.list %}<li><p>{{z.nav}}<br/><a href="{{z.url}}"><small>{{z.text}}</small></a></p></li>{% endfor %}
+              {% year %} {% for z in metadata.footer.nav3.list %}<li><p>{{z.nav}}<br/><a href="{{z.url}}"><small>{{z.text}}</small></a></p></li>{% endfor %}
             </ul>
         </div>        
     </div>

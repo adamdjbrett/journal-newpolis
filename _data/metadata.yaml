@@ -1,6 +1,6 @@
 title: "THE NEW POLIS"
 subtitle: "A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"
-url: http://localhost:8080
+url: https://thenewpolis.com/
 language: en
 description: "The Whitestone Foundations dba Whitestone Publications is a Colorado-registered 501(c)3 non-profit corporation."
 favicon: 
@@ -8,16 +8,16 @@ image:
 
 navbar: 
   title: THE NEW POLIS
-  description: "HE NEW POLIS - A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"
+  description: "THE NEW POLIS - A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"
   list: 
     - nav: Home
       url: /
     - nav: About
       url: /about/
     - nav: Editors
-      url: /
+      url: /editors/
     - nav: Submissions
-      url: /
+      url: /submissions/
     - nav: Issues
       url: /
     - nav: Search
@@ -60,7 +60,7 @@ footer:
      - nav: Sent Message
        text: "info@domain.com"
        url: "mailto:info@domain.com"
- copyrights: "2025 My Web"
+ copyrights: "White Stone Foundations."
 
 author:
   name: Carl Raschke
