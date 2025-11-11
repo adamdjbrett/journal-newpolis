@@ -29,11 +29,16 @@ export default async function(eleventyConfig) {
             "./public/": "/"
         })
         .addPassthroughCopy("./content/feed/pretty-atom-feed.xsl")
-        .addPassthroughCopy("src/archives/**/*.pdf");
+        .addPassthroughCopy("src/archives/**/*.pdf")
+        .addPassthroughCopy("**/*.pdf")
+        .addPassthroughCopy({
+            "./public/citations/": "/citations/"
+        });
 
     // Watch files
     eleventyConfig.addWatchTarget("css/**/*.css");
     eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpg,jpeg,gif}");
+    eleventyConfig.addWatchTarget("public/citations/**/*");
 
     // Per-page bundles (CSS)
     eleventyConfig.addBundle("css", {
@@ -172,6 +177,9 @@ export default async function(eleventyConfig) {
         return (new Date()).toISOString();
     });
     eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
+    // Enable passthrough copy behavior for dev server
+    eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
     // End of eleventyConfig function
 };
