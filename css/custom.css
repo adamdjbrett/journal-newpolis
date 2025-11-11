@@ -19,11 +19,16 @@ body, html {
     width: 100%;
     max-width: 1140px;
     margin: 0 auto; 
-    padding: 10px 15px;
+    padding: 50px 30px;
 }
 
 #main * {
     text-align: initial;
+    max-width: 1140px;
+}
+
+.archive {
+    padding: 30px;
 }
 
 .navbars-container {
@@ -39,8 +44,7 @@ body, html {
     background-position: center top -280px;
     color: white; 
     padding: 30px 5%;
-    position: relative;
-    
+    position: relative;    
     transition: all 0.5s ease-in-out; 
 }
 
@@ -55,7 +59,7 @@ body, html {
 
 .title-overlay {
     background-color: rgba(149, 71, 28, 0.7);
-    padding: 30px 20px;
+    padding: 40px 80px;
     margin: 0 5%;
 }
 
@@ -92,6 +96,8 @@ body, html {
     border: none !important;
     box-shadow: none !important;
     margin-right: 20px; 
+    margin-top: -22px; 
+    margin-bottom: 20px; 
 }
 
 .my-nav-item a {
@@ -186,6 +192,16 @@ body, html {
 
 #search .pagefind-ui__result-link {
     color: #5d310b !important; 
+}
+
+.jt {
+    margin-bottom: -35px;
+}
+
+.dt {
+    list-style-type: none;
+    margin-bottom: 80px;
+    
 }
 
 @media (max-width: 400px) {

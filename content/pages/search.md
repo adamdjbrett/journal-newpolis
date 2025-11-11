@@ -4,10 +4,24 @@ description: Search Artilce Issues and others.
 permalink: /search/
 ---
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<div id="search" class="bg-white">
+    <ul class="my-nav">
+        {% for n in metadata.navbar.list %}
+            <li class="my-nav-item">
+                <a href="{{ n.url }}">
+                    {{ n.nav }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+
 <script src="/pagefind/pagefind-ui.js"></script>
-<div id="search" class="bg-white"></div>
 <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        new PagefindUI({ element: "#search", showSubResults: true });
+    window.addEventListener('load', function() {
+        new PagefindUI({ 
+            element: "#search",
+            // Opsi lain
+        });
     });
 </script>
