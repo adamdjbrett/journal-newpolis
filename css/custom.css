@@ -32,7 +32,7 @@ body, html {
 }
 
 .navbars-container {
-    height: 30vh;
+    height: 35vh;
     margin: 0 auto;
     max-width: 1140px;
     background-image: 
@@ -96,7 +96,7 @@ body, html {
     border: none !important;
     box-shadow: none !important;
     margin-right: 20px; 
-    margin-top: -22px; 
+     
     margin-bottom: 20px; 
 }
 
@@ -276,9 +276,21 @@ body, html {
 
 @media (max-width: 400px) {
     .navbars-container {
-        height: auto; 
-        padding: 15px; 
-    }
+    height: 430px;
+    margin: 0 auto;
+    max-width: 1140px;
+    background-image: 
+        linear-gradient(to right, rgba(26, 42, 108, 0.7), rgba(178, 31, 31, 0.7)),
+        url('/img/bg/future-1751262.svg');        
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top ;
+    color: white; 
+    padding: 30px 5%;
+    position: relative;    
+    transition: all 0.5s ease-in-out; 
+}
 
     .my-nav {
         justify-content: center;

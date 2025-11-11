@@ -5,15 +5,6 @@ permalink: /search/
 ---
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
 <div id="search" class="bg-white">
-    <ul class="my-nav">
-        {% for n in metadata.navbar.list %}
-            <li class="my-nav-item">
-                <a href="{{ n.url }}">
-                    {{ n.nav }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
     </div>
 
 <script src="/pagefind/pagefind-ui.js"></script>
