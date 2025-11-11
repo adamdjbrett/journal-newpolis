@@ -1,0 +1,15 @@
+---
+permalink: "/citations-sitemap.xml"
+layout: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set base = metadata.url or metadata.site or 'https://example.com/' -%}
+{%- for file in citationsFiles %}
+  <url>
+    <loc>{{ base }}citations/{{ file }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+{%- endfor %}
+</urlset>

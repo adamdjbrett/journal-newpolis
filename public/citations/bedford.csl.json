@@ -1,0 +1,15 @@
+[
+  {
+    "id": "01",
+    "type": "article-journal",
+    "title": "WILD GLOBALIZATION AND “WILD VALUE”",
+    "author": [
+      { "literal": "Gary Bedford" },
+      { "literal": "Carl Raschke" },
+      { "literal": "Joshua Ramos" }    ],
+    "issued": { "raw": "2022" },
+    "volume": "1",
+    "issue": "2",
+    "URL": "https://journal.thenewpolis.com/archives/1.2/Bedford.pdf"
+  }
+]
