@@ -13,11 +13,11 @@
 <a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
 {% include "partials/alert.njk" %}
 {% include "partials/nav.njk" %}
-<div id="main">
+<main id="main">
 <heading-anchors>
 {{ content | safe }}
 </heading-anchors>
-</div>
+</main>
 {% include "partials/footer.njk" %}
 <script type="module" src="{% getBundleFileUrl "js" %}"></script>
 </body>
