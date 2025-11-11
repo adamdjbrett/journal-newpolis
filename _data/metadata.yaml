@@ -6,6 +6,17 @@ description: "The Whitestone Foundations dba Whitestone Publications is a Colora
 favicon: 
 image: 
 
+table_of_content: Table of Content
+
+alert: 
+ show: true
+ title: "Warning!!"
+ color: "danger" # primary , danger, success, warning - color support
+ text: |
+    this is an banner and alert for information banner here... please check at [home page](/)
+
+    you can use it.
+
 navbar: 
   title: THE NEW POLIS
   description: "THE NEW POLIS - A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"

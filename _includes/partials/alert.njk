@@ -1,0 +1,7 @@
+{% if metadata.alert.show %}<div class="alert alert-{{metadata.alert.color}}" role="alert">
+        <button type="button" class="close" aria-label="Close" onclick="this.parentElement.style.display='none';">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{metadata.alert.title}}</strong> 
+        {{metadata.alert.text |md | safe}}
+    </div>{% endif %}

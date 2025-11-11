@@ -19,11 +19,16 @@ body, html {
     width: 100%;
     max-width: 1140px;
     margin: 0 auto; 
-    padding: 10px 15px;
+    padding: 50px 30px;
 }
 
 #main * {
     text-align: initial;
+    max-width: 1140px;
+}
+
+.archive {
+    padding: 30px;
 }
 
 .navbars-container {
@@ -39,8 +44,7 @@ body, html {
     background-position: center top -280px;
     color: white; 
     padding: 30px 5%;
-    position: relative;
-    
+    position: relative;    
     transition: all 0.5s ease-in-out; 
 }
 
@@ -55,7 +59,7 @@ body, html {
 
 .title-overlay {
     background-color: rgba(149, 71, 28, 0.7);
-    padding: 30px 20px;
+    padding: 40px 80px;
     margin: 0 5%;
 }
 
@@ -92,6 +96,8 @@ body, html {
     border: none !important;
     box-shadow: none !important;
     margin-right: 20px; 
+    margin-top: -22px; 
+    margin-bottom: 20px; 
 }
 
 .my-nav-item a {
@@ -186,6 +192,86 @@ body, html {
 
 #search .pagefind-ui__result-link {
     color: #5d310b !important; 
+}
+
+.jt {
+    margin-bottom: -35px;
+}
+
+.dt {
+    list-style-type: none;
+    margin-bottom: 80px;   
+}
+
+.alert {
+    width: 100%;
+    max-width: 1140px;
+    padding: 12px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    font-size: 1em;
+    font-family: inherit; 
+    line-height: 0.8;
+    text-align: initial;
+}
+
+.alert-primary {
+    color: #fff;
+    background-color: rgba(26, 42, 108, 0.9); 
+    border-color: rgba(26, 42, 108, 1);
+}
+
+.alert-danger {
+    color: #fff;
+    background-color: rgba(178, 31, 31, 0.9); 
+    border-color: rgba(178, 31, 31, 1);
+}
+
+.alert-success {
+    color: #155724; 
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-warning {
+    color: #856404; 
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert .close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    opacity: 0.9;
+    margin-left: 15px;
+}
+
+.alert .close:hover {
+    opacity: 1;
+}
+
+.alert-primary .close,
+.alert-danger .close {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); 
+    color: white; 
+}
+
+.alert.hidden {
+    display: none;
 }
 
 @media (max-width: 400px) {

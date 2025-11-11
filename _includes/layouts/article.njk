@@ -3,8 +3,13 @@ layout: layouts/base.njk
 ---
 <article class="article">
   <header class="article-header">
+
     <h1>{{ title }}</h1>
     
+
+<div>{{metadata.table_of_content}}
+    {{ content | toc | safe }}</div>
+
     {% if authors %}
       <p class="article-authors">
         {{ authors | authorsToLinks(collections.authors) | safe }}

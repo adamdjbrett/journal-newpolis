@@ -3,13 +3,7 @@
             <a class="none text-white" href="{{metadata.url}}">{{metadata.navbar.title}}</a>
         </div>
 
-        <div class="title-overlay">
-            <h1 class="journal-title">
-                {{metadata.navbar.description}}
-            </h1>
-        </div>
-
-        <nav class="main-menu">
+        <nav class="main-menu" data-pagefind-index="true">
             	<ul class="my-nav">
     {% for n in metadata.navbar.list %}
         <li class="my-nav-item">
@@ -20,6 +14,11 @@
     {% endfor %}
 </ul>
         </nav>
+        <div class="title-overlay">
+            <h1 class="journal-title">
+                {{metadata.navbar.description}}
+            </h1>
+        </div>
     </header>
 
 <header>
