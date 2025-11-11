@@ -26,6 +26,14 @@ collections:
           - { label: "Favicon", name: "favicon", widget: "image", required: false }
           - { label: "Image", name: "image", widget: "image", required: false }
           - { label: "Table of Content Widget", name: "table_of_content", widget: "string", required: false }
+          - label: "Alert Banner"
+            name: "alert"
+            widget: "object"
+            fields:
+              - { label: "Activate", name: "show", widget: "boolean", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Color", name: "color", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "markdown", required: false }
           - label: "Navbar"
             name: "navbar"
             widget: "object"
