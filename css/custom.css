@@ -81,7 +81,7 @@ body, html {
 }
 .nav-menu {
     padding-right: 30px;
-}
+    }
 .my-nav {
     list-style: none !important;
     padding: 0 !important;
@@ -95,16 +95,15 @@ body, html {
 .my-nav-item {
     border: none !important;
     box-shadow: none !important;
-    margin-right: 20px; 
-     
-    margin-bottom: 20px; 
+    margin-right: 10px;      
+    margin-bottom: 20px;
 }
 
 .my-nav-item a {
     text-decoration: none !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 5px 10px;
+    padding: 10px
 }
 
 .my-nav-item a[aria-current="page"] {
