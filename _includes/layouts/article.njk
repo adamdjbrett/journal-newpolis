@@ -23,7 +23,10 @@ layout: layouts/base.njk
     {% endif %}
     {% if pdf %}
         <div class="meta-item">
-          <strong>PDF:</strong> <a href="{{ pdf }}" target="_blank" rel="noopener noreferrer">Download PDF</a>
+          <strong>Metadata:</strong> <a href="{{ pdf }}" target="_blank" rel="noopener noreferrer">Download PDF</a> 
+          {% if citation_file %}
+           &nbsp;| &nbsp; <a href="{{ citation_file }}" download>Download Citation</a>
+          {% endif %}
         </div>
       {% endif %}
   </header>
