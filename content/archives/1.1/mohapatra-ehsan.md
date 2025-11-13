@@ -9,5 +9,5 @@ season: Winter
 year: 2022
 authors: magna-mohapatra, zunayed-ahmed-ehsan
 pdf:  /archives/1.1/Mohapatra-Ehsan.pdf
-citation_file: 
+citation_file: /citations/mohapatra-ehsan.ris
 ---

@@ -9,5 +9,5 @@ season: Fall
 year: 2022
 authors: 
 pdf:  /archives/1.2/
-citation_file: 
+citation_file: /citations/bios.ris
 ---

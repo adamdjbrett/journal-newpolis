@@ -9,5 +9,5 @@ season: Fall
 year: 2022
 authors: joshua-ramos
 pdf:  /archives/1.2/Ramos.pdf
-citation_file: 
+citation_file: /ramos.ris
 ---

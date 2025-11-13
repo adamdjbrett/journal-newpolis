@@ -9,5 +9,5 @@ season: Winter
 year: 2022
 authors: richard-saville-smith
 pdf:  /archives/1.1/Saville-Smith.pdf
-citation_file: 
+citation_file: /citations/saville-smith.ris
 ---

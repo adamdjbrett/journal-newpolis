@@ -9,5 +9,5 @@ season: Fall
 year: 2022
 authors: carl-raschke
 pdf:  /archives/1.2/Raschke.pdf
-citation_file: 
+citation_file: /citations/raschke.ris
 ---

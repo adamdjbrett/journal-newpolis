@@ -9,5 +9,5 @@ season: Winter
 year: 2022
 authors: fernando-gomez-herrero
 pdf:  /archives/1.1/Herrero.pdf
-citation_file: 
+citation_file: /citations/herrero.ris
 ---
