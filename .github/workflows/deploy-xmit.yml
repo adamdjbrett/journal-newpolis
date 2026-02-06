@@ -20,7 +20,6 @@ permissions:
 env:
   ELEVENTY_RUN_MODE: build
   NODE_OPTIONS: "--max-old-space-size=8192"
-  USE_CACHED_THEORY: "1"
 
 jobs:
   deploy:
@@ -53,8 +52,19 @@ jobs:
       - name: Build site
         run: npx @11ty/eleventy
 
+      - name: Create deployment archive
+        run: |
+          cd _site
+          tar -czf ../deploy.tar.gz .
+
       - name: Deploy to XMIT
-        run: npx xmit@latest deploy _site
+        run: |
+          curl --fail --silent --show-error \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.XMIT_TOKEN }}" \
+            -H "Content-Type: application/gzip" \
+            --data-binary @deploy.tar.gz \
+            "https://app.xmit.dev/api/deploy/${{ env.XMIT_SITE }}"
         env:
           XMIT_TOKEN: ${{ secrets.XMIT_TOKEN }}
 
