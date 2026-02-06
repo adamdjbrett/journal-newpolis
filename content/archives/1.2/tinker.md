@@ -7,7 +7,7 @@ volume: 1
 issue: 2
 season: Fall
 year: 2022
-authors: 
+authors: tink-tinker
 pdf:  /archives/1.2/Tinker.pdf
-citation_file: 
+citation_file: /citations/tinker2.ris
 ---

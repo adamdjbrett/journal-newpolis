@@ -9,5 +9,5 @@ season: Winter
 year: 2022
 authors: walter-mignolo, catherine-walsh, tink-tinker, fernando-gomez-herrero
 pdf:  /archives/1.1/WhatDoWeMeanByDecolonialitydocx.pdf
-citation_file: 
+citation_file: /citations/whatdowemeanbydecolonialitydocx.ris
 ---

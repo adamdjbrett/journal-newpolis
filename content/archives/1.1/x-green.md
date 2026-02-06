@@ -9,6 +9,6 @@ season: Winter
 year: 2022
 authors: roger-green
 pdf:  /archives/1.1/X-Green.pdf
-citation_file: 
+citation_file: /citations/x-green.ris
 ---
 

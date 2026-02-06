@@ -10,12 +10,10 @@ table_of_content: Table of Content
 
 alert: 
  show: true
- title: "Warning!!"
+ title: "Notice"
  color: "danger" # primary , danger, success, warning - color support
  text: |
-    this is an banner and alert for information banner here... please check at [home page](/)
-
-    you can use it.
+    This project has been archived.
 
 navbar: 
   isn: "000-123456"

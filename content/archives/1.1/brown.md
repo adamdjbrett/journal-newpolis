@@ -9,7 +9,7 @@ season: Winter
 year: 2022
 authors: brendan-john-brown
 pdf:  /archives/1.1/Brown.pdf
-citation_file: 
+citation_file: /citations/brown.ris
 ---
 
 
