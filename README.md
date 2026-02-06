@@ -1,4 +1,4 @@
-
+[![Deploy Eleventy to XMIT](https://github.com/adamdjbrett/journal-newpolis/actions/workflows/deploy-xmit.yml/badge.svg)](https://github.com/adamdjbrett/journal-newpolis/actions/workflows/deploy-xmit.yml)
 [demo](https://tnpj.xmit.dev)
 
 # Todo list
