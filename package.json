@@ -1,39 +1,31 @@
 {
-  "name": "eleventy-simple",
-  "version": "9.0.0",
+  "name": "journal-newpolis",
+  "version": "0.0.1",
   "description": "A blog starter using 11ty and Simple.css.",
   "type": "module",
   "scripts": {
     "build": "npx @11ty/eleventy",
     "build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
-    "build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
+    "build-ghpages": "npx @11ty/eleventy --pathprefix=/journal-newpolis/",
     "start": "npx @11ty/eleventy --serve --quiet",
-    "start-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/ --serve --quiet",
+    "start-ghpages": "npx @11ty/eleventy --pathprefix=/journal-newpolis/ --serve --quiet",
     "debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
     "benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/11ty/eleventy-base-blog.git"
+    "url": "git://github.com/adamdjbrett/journal-newpolis.git"
   },
   "author": {
-    "name": "Zach Leatherman",
-    "email": "zachleatherman@gmail.com",
-    "url": "https://zachleat.com/"
+    "name": "Adam Dj Brett",
+    "email": "info@adamdjbrett.com",
+    "url": "https://adamdjbrett.com/"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/11ty"
-  },
-  "bugs": {
-    "url": "https://github.com/11ty/eleventy-base-blog/issues"
-  },
-  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-img": "^6.0.4",
@@ -53,7 +45,6 @@
 		"pagefind": "^1.4.0",
 		"eleventy-plugin-toc": "^1.1.5",
 		"markdown-it": "^14.1.0",
-		"markdown-it-table-of-contents": "^0.8.0",
 		"markdown-it-anchor": "^9.2.0",
 		"markdown-it-footnote": "^4.0.0",
 		"markdown-it-table-of-contents": "^0.8.0",

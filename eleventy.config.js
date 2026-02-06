@@ -52,8 +52,6 @@ export default async function(eleventyConfig) {
         preAttributes: { tabindex: 0 }
     });
 
-    // --- Pendaftaran Eleventy TOC Plugin ---
-    // Konfigurasi ini menggunakan Shortcode {% toc %}
     eleventyConfig.addPlugin(pluginTOC, {
         tags: ['h2', 'h3', 'h4', 'h5'],
         id: 'toci', 
@@ -63,8 +61,6 @@ export default async function(eleventyConfig) {
         wrapper: 'div'
     });
     
-    // --- Konfigurasi Markdown-it Terpusat (Wajib untuk TOC) ---
-    // Menggabungkan semua inisialisasi 'md' yang sebelumnya terpisah.
 
     let mdOptions = {
         html: true,
@@ -73,7 +69,6 @@ export default async function(eleventyConfig) {
         typographer: true,
     };
 
-    // 1. Inisialisasi dan Rangkai SEMUA plugin Markdown-it (markdownItAnchor PENTING)
     const md = new markdownIt(mdOptions)
         .use(markdownItAnchor, { 
             permalink: markdownItAnchor.permalink.headerLink(),
@@ -83,27 +78,49 @@ export default async function(eleventyConfig) {
         .use(markdownItAttrs)
         .use(markdownItFootnote);
 
-    // 2. Daftarkan instance MD yang telah dikonfigurasi ke Eleventy
     eleventyConfig.setLibrary("md", md);
 
-    // 3. Daftarkan filter 'md' (hanya sekali)
     eleventyConfig.addFilter("md", function (content) {
         return md.render(content);
     });
 
-    // Plugin lainnya
     eleventyConfig.addPlugin(pluginNavigation);
     eleventyConfig.addPlugin(HtmlBasePlugin);
     eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
-    // After build hook
     eleventyConfig.on("eleventy.after", () => {
         execSync(`npx pagefind --site _site --glob \"**/*.html\"`, {
             encoding: "utf-8",
         });
     });
-    
-    // Feed plugin configuration
+eleventyConfig.addFilter("getAuthorObj", (authorsCollection, authorKey) => {
+        if (!authorKey || !authorsCollection) return null;
+        return authorsCollection.find(author => {
+            const key = author.data?.key || author.fileSlug;
+            return key.toLowerCase() === String(authorKey).toLowerCase().trim();
+        });
+    });
+
+    eleventyConfig.addFilter("getPostsByAuthor", (allPosts, authorKey) => {
+        if (!allPosts || !authorKey) return [];
+        const normalizedKey = String(authorKey).toLowerCase().trim();
+        return allPosts.filter(post => {
+            const authorField = post.data.author || post.data.authors;
+            if (!authorField) return false;
+            const postAuthors = Array.isArray(authorField) 
+                ? authorField.map(a => String(a).toLowerCase().trim())
+                : String(authorField).split(',').map(a => a.trim().toLowerCase());
+            return postAuthors.includes(normalizedKey);
+        });
+    });
+
+    eleventyConfig.addCollection("authors", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("content/authors/*.md").sort((a, b) => {
+            const nameA = (a.data.name || a.data.title || "").toLowerCase();
+            const nameB = (b.data.name || b.data.title || "").toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
+    });
     eleventyConfig.addPlugin(feedPlugin, {
         type: "atom", // or "rss", "json"
         outputPath: "/feed/feed.xml",
@@ -146,15 +163,6 @@ export default async function(eleventyConfig) {
 
     // Filters
     eleventyConfig.addPlugin(pluginFilters);
-
-    // Collections
-    eleventyConfig.addCollection("authors", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("content/authors/*.md").sort((a, b) => {
-            const an = (a.data.name || a.id || "").toLowerCase();
-            const bn = (b.data.name || b.id || "").toLowerCase();
-            return an.localeCompare(bn);
-        });
-    });
 
     // Passthrough copy for archives
     eleventyConfig.addPassthroughCopy({ "content/archives": "archives" });

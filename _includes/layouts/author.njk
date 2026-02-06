@@ -1,9 +1,22 @@
 ---
 layout: layouts/base.njk
 ---
+<style>
+  .author p, .author li {
+    margin-bottom: 0.3rem !important;
+  }
+  .author h1, .author h2 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .author-bio {
+    margin-bottom: 1rem !important;
+  }
+</style>
+
 <article class="author">
   <h1>{{ name or title }}</h1>
-  {% if organization %}<p class="author-org">{{ organization }}</p>{% endif %}
+  {% if organization %}<p class="author-org"><em>{{ organization }}</em></p>{% endif %}
   {% if bio %}<div class="author-bio">{{ bio | safe }}</div>{% endif %}
 
   {% if social and social.length %}
@@ -17,10 +30,10 @@ layout: layouts/base.njk
   </ul>
   {% endif %}
 
-  {# List all articles by this author #}
   {% set akey = key or page.fileSlug %}
   {% set archiveItems = collections.all | byFolder('content/archives') %}
   {% set hasAny = false %}
+  
   <h2>Articles by {{ name or title }}</h2>
   <ul>
     {%- for p in archiveItems %}
@@ -35,6 +48,7 @@ layout: layouts/base.njk
       {%- endif -%}
     {%- endfor %}
   </ul>
+
   {% if not hasAny %}
     <p><em>No articles found for this author yet.</em></p>
   {% endif %}
