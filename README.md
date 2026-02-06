@@ -1,4 +1,8 @@
+
+[demo](https://tnpj.xmit.dev)
+
 # Todo list
+0. make layout match <thenewpolis.xmit.dev> with the exception of adding established date to top left corner and the ISSN to top right.
 1. switch metadata.js to metadata.yaml
 2. add subtitle to visible exterior
 3. title and subtitle visible on every page 
