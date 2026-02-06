@@ -8,8 +8,8 @@ issue: 1
 season: Winter
 year: 2022
 authors: maria-cristina-manzano-munguia, guillermo-lopez-varela
-pdf:  /archives/1.1/
-citation_file: 
+pdf:  /archives/1.1/Manzano.pdf
+citation_file: /citations/manzano.pdf
 ---
 
 

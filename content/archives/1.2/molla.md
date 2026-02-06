@@ -9,5 +9,5 @@ season: Fall
 year: 2022
 authors: rode-molla
 pdf:  /archives/1.2/Molla.pdf
-citation_file: 
+citation_file: /citations/molla.ris
 ---

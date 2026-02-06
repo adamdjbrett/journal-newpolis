@@ -8,6 +8,6 @@ issue: 2
 season: Fall
 year: 2022
 authors: 
-pdf:  /archives/1.2/
-citation_file: 
+pdf:  /archives/1.2/Bios.pdf
+citation_file: /citations/bios.ris
 ---

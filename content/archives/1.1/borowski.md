@@ -9,6 +9,6 @@ season: Winter
 year: 2022
 authors: mateusz-borowski
 pdf:  /archives/1.1/Borowski.pdf
-citation_file: 
+citation_file: /citations/borowski.ris
 ---
 

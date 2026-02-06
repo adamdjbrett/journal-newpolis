@@ -9,5 +9,5 @@ season: Fall
 year: 2022
 authors: soong-chan-rah, jason-alvis, carl-raschke, scott-coley, john-zivojinovic
 pdf:  /archives/1.2/Difficult.pdf
-citation_file: 
+citation_file: /citations/difficult.ris
 ---
