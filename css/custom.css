@@ -313,3 +313,24 @@ body, html {
         padding: 15px;
     }
 }
+    .tnp-header-top {
+        width: 100%;
+        color: #f9f9f9;
+    }
+
+    .tnp-meta-wrapper {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1140px; 
+        margin: 2px;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+
+    .tnp-meta-item {
+        font-family: sans-serif;
+        font-weight: 700;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }

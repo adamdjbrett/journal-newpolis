@@ -1,4 +1,4 @@
-title: "THE NEW POLIS"
+title: "The New Polis Journal"
 subtitle: "A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"
 url: https://thenewpolis.com/
 language: en
@@ -18,6 +18,7 @@ alert:
     you can use it.
 
 navbar: 
+  isn: "000-123456"
   title: THE NEW POLIS
   description: "THE NEW POLIS - A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"
   list: 
