@@ -3,7 +3,6 @@ backend:
   repo: adamdjbrett/journal-newpolis
   branch: main
 
-# The folder used to store uploaded images
 media_folder: "public/img"
 
 editor:
