@@ -4,11 +4,6 @@ on:
   push:
     branches: ["main", "master"]
   workflow_dispatch:
-    inputs:
-      site:
-        description: "XMIT site/domain (e.g. tnpj.xmit.dev)"
-        required: true
-        type: string
 
 concurrency:
   group: deploy-xmit-${{ github.ref }}
@@ -24,8 +19,6 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      XMIT_SITE: tnpj.xmit.dev@268
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,21 +45,12 @@ jobs:
       - name: Build site
         run: npx @11ty/eleventy
 
-      - name: Create deployment archive
-        run: |
-          cd _site
-          tar -czf ../deploy.tar.gz .
-
       - name: Deploy to XMIT
-        run: |
-          curl --fail --silent --show-error \
-            -X POST \
-            -H "Authorization: Bearer ${{ secrets.XMIT_TOKEN }}" \
-            -H "Content-Type: application/gzip" \
-            --data-binary @deploy.tar.gz \
-            "https://app.xmit.dev/api/deploy/${{ env.XMIT_SITE }}"
-        env:
-          XMIT_TOKEN: ${{ secrets.XMIT_TOKEN }}
+        uses: xmit-co/xmit.co@v4
+        with:
+          key: ${{ secrets.XMIT_KEY }}
+          site: "tnpj.xmit.dev@268"
+          source: "_site"
 
       - name: Summary
-        run: echo "✅ Deployed to ${{ env.XMIT_SITE }}" >> "$GITHUB_STEP_SUMMARY"
+        run: echo "✅ Deployed to tnpj.xmit.dev" >> "$GITHUB_STEP_SUMMARY"
