@@ -38,6 +38,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Logo Image", name: "image", widget: "image", required: false }
               - { label: "ISSN", name: "isn", widget: "string", required: false }
               - { label: "Description", name: "description", widget: "string", required: false }
               - label: "List"

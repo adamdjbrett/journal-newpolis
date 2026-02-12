@@ -8,7 +8,17 @@
 
 <header class="navbars-container">
     <div class="top-info">
-        <a class="none text-white" href="{{metadata.url}}">{{metadata.navbar.title}}</a>
+       <a class="none text-white" href="{{ metadata.url }}">
+	   <img 
+  src="{{ metadata.navbar.image }}" 
+  alt="{{ metadata.navbar.title }}" 
+  width="30" 
+  height="30"
+  eleventy:ignore
+  style="margin-right: 8px; display: inline-block; vertical-align: middle; border: none; padding: 0; background: none;"
+>
+	{{ metadata.navbar.title }}
+</a>
     </div>
 
     <div class="title-overlay">
