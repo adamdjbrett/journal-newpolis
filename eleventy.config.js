@@ -28,16 +28,16 @@ export default async function(eleventyConfig) {
         .addPassthroughCopy({
             "./public/": "/"
         })
-        .addPassthroughCopy("./content/feed/pretty-atom-feed.xsl")
-        .addPassthroughCopy("src/archives/**/*.pdf")
-        .addPassthroughCopy("**/*.pdf")
-        .addPassthroughCopy({
-            "./public/citations/": "/citations/"
-        });
+        eleventyConfig.addPassthroughCopy({ "./public/": "/" });
+    eleventyConfig.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
+    eleventyConfig.addPassthroughCopy("src/archives/**/*.pdf");
+    eleventyConfig.addPassthroughCopy("**/*.pdf");
+    eleventyConfig.addPassthroughCopy({ "./public/citations/": "/citations/" });
+    eleventyConfig.addPassthroughCopy({ "content/img": "img" });
 
     // Watch files
     eleventyConfig.addWatchTarget("css/**/*.css");
-    eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpg,jpeg,gif}");
+    eleventyConfig.addWatchTarget("public/img/**/*");
     eleventyConfig.addWatchTarget("public/citations/**/*");
 
     // Per-page bundles (CSS)
@@ -92,7 +92,7 @@ export default async function(eleventyConfig) {
     eleventyConfig.addPlugin(pluginNavigation);
     eleventyConfig.addPlugin(HtmlBasePlugin);
     eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
-
+	eleventyConfig.addWatchTarget("public/img/**/*");
     eleventyConfig.on("eleventy.after", () => {
         execSync(`npx pagefind --site _site --glob \"**/*.html\"`, {
             encoding: "utf-8",
