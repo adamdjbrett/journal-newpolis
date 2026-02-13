@@ -3,78 +3,49 @@ subtitle: "A Journal of Critical Theory, Social Analysis, and Political Philosop
 url: https://thenewpolis.com/
 #url: http://localhost:8080
 language: en
+locale: "en_US"
 description: "The Whitestone Foundations dba Whitestone Publications is a Colorado-registered 501(c)3 non-profit corporation."
-favicon: 
-image: 
+favicon: /img/bg/buildings-148549.svg
+image: /img/bg/buildings-148549.svg
+email: hello@domain.com
+
+metasocial: 
+  twitter: "https://x.com/user"
+  tweettwitteruser: "@user"
+  facebook: "https://fb.com/user"
+
 
 table_of_content: Table of Content
 
-alert: 
- show: true
- title: "Notice"
- color: "danger" # primary , danger, success, warning - color support
- text: |
-    This project has been archived.
+widget:
+  lastest_post: LATEST POSTS
+  archive:
+    title: ARCHIVES
+    description: Explore past issues of The New Polis Journal
+    show: true
+    button_text: EXPLORE ALL ARCHIVES
+
+
+hero: 
+  title: JOURNAL NEW POLIS
+  description: CRITICAL THEORY | SOCIAL ANALYSIS | POLITICAL PHILOSOPHY AND THEOLOGY
+  image1: /img/bg/cityscape-32210.svg
+  image2: /img/bg/future-1751262.svg
+  image3: /img/bg/buildings-148549.svg
 
 navbar: 
-  isn: "000-123456"
-  title: Whitestone Foundation
-  image: "/img/whitestone.png"
-  description: "THE NEW POLIS - A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"
-  list: 
-    - nav: Home
-      url: /
-    - nav: About
-      url: /about/
-    - nav: Editors
-      url: /editors/
-    - nav: Submissions
-      url: /submissions/
-    - nav: Issues
-      url: /
-    - nav: Search
-      url: /search/
+ - title: Home
+   url: /
+ - title: About
+   url: /about/
+ - title: Archives
+   url: /archives/
+ - title: Blog
+   url: /blog/
+ - title: Submissions
+   url: /submissions/
 
 footer: 
- nav1: 
-   title: THE NEW POLIS
-   info: 
-     - text: "A Journal of Critical Theory, Social Analysis, and Political Philosophy and Theology"
-   list: 
-     - nav: Issues 1
-       url: /
-     - nav: Issues 2
-       url: /
- nav2: 
-   title: Menu
-   list: 
-     - nav: Home
-       url: /
-     - nav: About
-       url: /about/
-     - nav: Editors
-       url: /
-     - nav: Submissions
-       url: /
-     - nav: Issues
-       url: /
-     - nav: Search
-       url: /search/
- nav3: 
-   title: Contact
-   list: 
-     - nav: Visit Map
-       text: "Sistala Street 78"
-       url: "https://maps.app.goo.gl/5qmeK2ByNm3o6g538"
-     - nav: Call Us
-       text: "+12345678"
-       url: "tel:12345678"
-     - nav: Sent Message
-       text: "info@domain.com"
-       url: "mailto:info@domain.com"
- copyrights: "White Stone Foundations."
+  info: "A WHITESTONE PUBLICATION"
+  text: "© Copyright The Whitestone Foundation dba The New Polis 2018-2021. All Rights Reserved."
 
-author:
-  name: Carl Raschke
-  email: carl.raschke@du.edu
-  url: https://carlraschke.com/

@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+---
+<main class="container my-5">
+    <header class="text-center mb-5 pb-5 border-bottom">
+        <h1 class="display-4 serif fw-bold mb-3">{{ title }}</h1>
+        <p class="lead text-secondary serif italic">The scholars and editors behind the publication.</p>
+    </header>
+
+    <div class="row g-4">
+        {% for editor in editors.list %}
+        <div class="col-md-6 col-lg-4">
+            <div class="editor-card h-100 p-4 border bg-white shadow-sm d-flex flex-column align-items-center text-center">
+                <img src="{{ editor.image }}" 
+                     alt="{{ editor.name }}" 
+                     class="rounded-circle mb-3 border p-1" 
+                     width="100" height="100" 
+                     style="object-fit: cover;">
+                
+                <span class="badge bg-light text-dark border text-uppercase mb-2" style="font-size: 0.7rem; letter-spacing: 1px;">
+                    {{ editor.role }}
+                </span>
+                
+                <h3 class="h5 serif fw-bold mb-1">{{ editor.name }}</h3>
+                <p class="small text-secondary italic mb-3">{{ editor.affiliation }}</p>
+                
+                <div class="mt-auto pt-3 border-top w-100">
+                    <a href="mailto:{{ editor.email }}" class="text-decoration-none text-dark small fw-bold">
+                        <i class="bi bi-envelope-at me-1"></i> Contact Editor
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+<style>
+    .serif { font-family: 'Georgia', serif; }
+    .italic { font-style: italic; }
+    .editor-card { 
+        transition: all 0.3s ease;
+        border-top: 4px solid #000 !important; /* Aksen biar tegas */
+    }
+    .editor-card:hover { 
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+    }
+</style>

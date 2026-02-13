@@ -1,0 +1,44 @@
+<header class="site-header"
+    style="
+    background-image: 
+    linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)),
+    url('{{ metadata.hero.image1 }}'),
+        url('{{ metadata.hero.image2 }}'),
+        url('{{ metadata.hero.image3 }}');
+    background-repeat: repeat, repeat, repeat;
+    background-position: 20% 40%, 60% 46%, 50% 60%;
+    background-size: cover, cover, cover;
+    position: relative;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    ">
+    <h1 class="hero-title" style="font-family: 'Crete Round', serif; font-weight: bold; font-size: 3.5rem; margin-bottom: 0;">
+        {{ metadata.hero.title }}
+    </h1>
+    <p class="hero-sub text-white" style="letter-spacing: 2px; font-size: 0.9rem; margin-top: 5px;">
+        {{ metadata.hero.description }}
+    </p>
+</header>
+
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <div class="container">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" style="filter: invert(1);">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+            <ul class="navbar-nav">
+                {% for item in metadata.navbar %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

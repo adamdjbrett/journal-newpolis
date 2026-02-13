@@ -1,52 +1,131 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="article">
-  <header class="article-header">
-
-    <h1>{{ title }}</h1>
+<article class="article container my-5">
     
-
-<div>{{metadata.table_of_content}}
-    {{ content | toc | safe }}</div>
-
-    {% if authors %}
-      <p class="article-authors">
-        {{ authors | authorsToLinks(collections.authors) | safe }}
-      </p>
-    {% endif %}
-
-    {% if description %}
-      <div class="article-description">
-        {{ description | markdownify | safe }}
-      </div>
-    {% endif %}
-    {% if pdf %}
-        <div class="meta-item">
-          <strong>Metadata:</strong> <a href="{{ pdf }}" target="_blank" rel="noopener noreferrer">Download PDF</a> 
-          {% if citation_file %}
-           &nbsp;| &nbsp; <a href="{{ citation_file }}" download>Download Citation</a>
-          {% endif %}
+    <header class="article-header pb-4 mb-5 border-bottom">
+        <h1 class="display-4 serif fw-bold mb-3">{{ title }}</h1>
+        
+        {% if authors %}
+        <div class="article-authors h5 serif text-secondary mb-4">
+            {{ authors | authorsToLinks(collections.authors) | safe }}
         </div>
-      {% endif %}
-  </header>
+        {% endif %}
 
-  <div class="article-content">
-    {{ content | safe }}
-  </div>
-<h2>Citation Information</h2>
-    <div class="article-meta">
-        <div class="meta-item">
-          {% if authors %}{{ authors | authorsToNames(collections.authors) }}{% endif %}, &lsquo;{{ title }}&rsquo;, <em>{{ metadata.title }}</em>, <em>{{ metadata.subtitle }}</em>, {{ volume }}({{ issue }}), {{ year }}{% if season %}, {{ season }}{% endif %}, <a href="{{ pdf }}" target="_blank" rel="noopener noreferrer">{{metadata.url}}{{ pdf }}</a>.
+        {% if content | toc %}
+        <div class="toc-container bg-light p-4 mb-4 border shadow-sm">
+            <h5 class="fw-bold text-uppercase small mb-3 letter-spacing-1">{{ metadata.table_of_content or "Table of Contents" }}</h5>
+            <div class="toc-content small">
+                {{ content | toc | safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if description %}
+        <div class="article-description lead serif italic text-secondary border-start border-4 ps-4 mb-4">
+            {{ description | markdownify | safe }}
+        </div>
+        {% endif %}
+
+        {% if pdf %}
+        <div class="article-actions py-3 border-top pt-5 d-flex align-items-center gap-3">
+            <span class="small fw-bold text-uppercase text-muted">Resources:</span>
+            <a href="{{ pdf }}" class="btn btn-sm btn-dark rounded-0 px-3" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-file-pdf"></i> Download PDF
+            </a>
+            {% if citation_file %}
+            <a href="{{ citation_file }}" class="btn btn-sm btn-outline-dark rounded-0" download>
+                <i class="bi bi-quote"></i> Download Citation (RIS)
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </header>
+
+    <section class="article-content serif px-md-5 mb-5 mx-auto" style="max-width: 850px;">
+        {{ content | safe }}
+    </section>
+
+<footer class="article-footer mt-5 pt-5">
+    <div class="row align-items-center">
+        <div class="col p-3">
+            <h3 class="serif fw-bold">Citation Information</h3>
+        </div>
+        {% if citation_file %}
+        <div class="col-auto">
+            <a href="{{ citation_file }}" class="btn btn-light me-3 btn-sm rounded-0 fw-bold text-uppercase" download style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                <i class="bi bi-download me-1"></i> Download RIS
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="citation-wrapper position-relative bg-white border p-4 shadow-sm">
+        <div class="citation-text serif text-dark small mb-0" style="line-height: 1.6;">
+            {%- if authors %}{{ authors | authorsToNames(collections.authors) }}{% endif %}, 
+            &ldquo;{{ title }}&rdquo;, 
+            <span class="fst-italic">{{ metadata.title }}</span>, 
+            <span class="fst-italic">{{ metadata.subtitle }}</span>, 
+            {{ volume }}({{ issue }}), 
+            {{ year }}{% if season %}, {{ season }}{% endif %}, 
+            <a href="{{ metadata.url }}{{ pdf }}" target="_blank" rel="noopener noreferrer" class="text-muted text-break text-decoration-none border-bottom">
+                {{ metadata.url }}{{ pdf }}
+            </a>.
         </div>
     </div>
-    
-  {% if citation_file %}
-  <h3>Citation Download</h3>
-    <footer class="article-footer">
-      <div class="article-citation-info">
-        <a href="{{ citation_file }}" download>Download Citation</a>
-      </div>
-    </footer>
-  {% endif %}
+</footer>
 </article>
+
+<style>
+    .serif { font-family: 'Georgia', serif; }
+    .italic { font-style: italic; }
+    .letter-spacing-1 { letter-spacing: 1px; }
+    .border-dashed { border-style: dashed !important; }
+    .article-content { line-height: 1.8; font-size: 1.15rem; text-align: justify; }
+    .article-content p { margin-bottom: 1.6rem; }
+    .article-content h2, .article-content h3 { font-family: 'Georgia', serif; font-weight: bold; margin-top: 2.5rem; margin-bottom: 1.2rem; }
+    .toc-content ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+    .toc-content li { margin-bottom: 0.5rem; }
+    .toc-content a { text-decoration: none; color: #495057; }
+    .toc-content a:hover { color: #000; text-decoration: underline; }
+    .article-authors a { color: inherit; text-decoration: none; border-bottom: 1px solid #dee2e6; }
+    .article-authors a:hover { color: #000; border-bottom-color: #000; }
+     .citation-wrapper {
+        border-left: 4px solid #212529 !important; /* Accent border ala jurnal */
+    }
+    .citation-text {
+        color: #333 !important;
+        word-spacing: 1px;
+    }
+    .citation-text a:hover {
+        color: #000 !important;
+        border-bottom-color: #000 !important;
+    }
+.article-footer {
+    background-color: transparent !important;
+    color: #212529 !important;
+    padding-top: 3rem !important;
+    margin-top: 3rem !important;
+    border-top: 1px solid #dee2e6 !important;
+    text-align: left !important;
+}
+
+.citation-box {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    border-left: 4px solid #212529 !important;
+    padding: 1.5rem !important;
+    margin-top: 1rem;
+}
+
+.citation-box a {
+    color: #6c757d !important;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.citation-box a:hover {
+    color: #000 !important;
+    border-bottom-color: #000;
+}
+</style>

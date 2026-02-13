@@ -1,26 +1,50 @@
 ---js
-// <script>
 const pagination = {
-	data: "collections",
-	size: 1,
-	alias: "tag",
-	// Exclude internal/custom collections that are not user-defined tags
-	filter: ["all", "posts", "authors", "archivesIndex"],
-	// addAllPagesToCollections: true,
+    data: "collections",
+    size: 1,
+    alias: "tag",
+    filter: ["all", "posts", "authors", "archivesIndex"],
 };
 
 const eleventyExcludeFromCollections = true;
 
 const eleventyComputed = {
-	title: "Tagged '{{ tag }}'",
-	permalink: function(data) {
-		return `/tags/${this.slugify(data.tag)}/`;
-	}
+    title: "Topic: {{ tag }}",
+    permalink: function(data) {
+        return `/tags/${this.slugify(data.tag)}/`;
+    }
 };
+
+const layout = "layouts/base.njk";
 ---
-<h1>Tagged “{{ tag }}”</h1>
+<main class="container my-5">
+    <header class="mb-5 pb-3 border-bottom">
+        <span class="text-muted text-uppercase small fw-bold">Browsing Topic</span>
+        <h1 class="display-5 serif fw-bold">{{ title }}</h1>
+    </header>
 
-{% set postslist = collections[ tag ] %}
-{% include "postslist.njk" %}
+    <div class="row g-4">
+    {% set postslist = collections[ tag ] | reverse %}
+    {% for post in postslist %}
+        <div class="col-md-6">
+            <article class="h-100 border p-4 shadow-sm bg-white d-flex flex-column">
+                <h3 class="h4 serif fw-bold">
+                    <a href="{{ post.url }}" class="text-decoration-none text-dark">{{ post.data.title }}</a>
+                </h3>
+                <p class="text-secondary small mt-2">
+                    {{ post.data.description | truncate(120) }}
+                </p>
+                <div class="mt-auto pt-3 border-top small text-muted">
+                    {{ post.date | readableDate }}
+                </div>
+            </article>
+        </div>
+    {% endfor %}
+    </div>
 
-<p>See <a href="tags.njk">all tags</a>.</p>
+    <footer class="mt-5 pt-4">
+        <a href="/tags/" class="text-dark fw-bold text-decoration-none border-bottom border-dark pb-1">
+            &larr; View all topics
+        </a>
+    </footer>
+</main>

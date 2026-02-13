@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+---
+<main class="container my-5">
+    <header class="mb-5 pb-3 border-bottom">
+        <h1 class="display-5 serif fw-bold">{{ title }}</h1>
+    </header>
+
+    <div class="row g-4">
+        {%- set archiveItems = collections.all | byFolder('content/archives') %}
+        {%- for author in collections.authors %}
+            {%- set akey = author.data.key or author.fileSlug or author.data.page and author.data.page.fileSlug -%}
+            {%- set count = 0 -%}
+            {%- for p in archiveItems %}
+                {%- if p.data.authors -%}
+                    {%- set keys = p.data.authors | authorsToArray -%}
+                    {%- if akey in keys -%}{%- set count = count + 1 -%}{%- endif -%}
+                {%- endif -%}
+            {%- endfor -%}
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm bg-light p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="https://ui-avatars.com/api/?name={{ (author.data.name or author.data.title or akey) | urlencode }}&background=000&color=fff" 
+                                 class="rounded-circle me-3" width="50" height="50">
+                        </div>
+                        <div class="flex-grow-1">
+                            <h3 class="h6 mb-0 serif fw-bold">
+                                <a href="{{ author.url }}" class="text-dark text-decoration-none">{{ author.data.name or author.data.title or akey }}</a>
+                                <span class="badge rounded-pill bg-white text-dark border ms-1" style="font-size: 0.65rem;">{{ count }}</span>
+                            </h3>
+                            {%- if author.data.organization %}
+                                <div class="text-muted small italic" style="font-size: 0.8rem;">{{ author.data.organization }}</div>
+                            {% endif %}
+                        </div>
+                        <a href="{{ author.url }}" class="btn btn-sm btn-link text-dark"><i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        {%- endfor %}
+    </div>
+</main>
+
+<style>
+    .serif { font-family: 'Georgia', serif; }
+    .italic { font-style: italic; }
+</style>

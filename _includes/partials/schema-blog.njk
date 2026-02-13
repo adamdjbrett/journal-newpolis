@@ -1,0 +1,19 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "{{ metadata.title }}",
+  "description": "{{ metadata.description }}",
+  "url": "{{ metadata.url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ metadata.title }}",
+    "url": "{{ metadata.url }}"
+  },
+  "mainEntity": {
+    "@type": "WebSite",
+    "name": "{{ metadata.title }}",
+    "url": "{{ metadata.url }}"
+  }
+}
+</script>

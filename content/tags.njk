@@ -1,8 +1,18 @@
-<h1>Tags</h1>
+---
+layout: layouts/base.njk
+title: Topics & Tags
+---
+<main class="container my-5">
+    <header class="mb-5 pb-3 border-bottom text-center">
+        <h1 class="display-5 serif fw-bold">{{ title }}</h1>
+    </header>
 
-<ul>
-{% for tag in collections | getKeys | filterTagList | sortAlphabetically %}
-	{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
-{% endfor %}
-</ul>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+    {% for tag in collections | getKeys | filterTagList | sortAlphabetically %}
+        {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+        <a href="{{ tagUrl }}" class="btn btn-outline-dark rounded-0 px-4 py-2 serif shadow-sm">
+            #{{ tag }} <span class="badge bg-dark ms-2">{{ collections[tag].length }}</span>
+        </a>
+    {% endfor %}
+    </div>
+</main>

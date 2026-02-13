@@ -5,6 +5,11 @@
 4. sort by ``id`` on index.md for all ```.md``` in the folder
 5. add passthrough for ```.pdf```
 
+
+CHANGE LOG:
++ Full Migration in to TheNewPolis
+
+
 * * * 
 # Theme
 

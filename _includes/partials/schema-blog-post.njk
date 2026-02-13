@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ title }}",
+  "description": "{{ description or excerpt or '' }}",
+  "datePublished": "{{ date | isoDate }}",
+  "dateModified": "{{ date | isoDate }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ author or metadata.title }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ metadata.title }}",
+    "url": "{{ metadata.url }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ metadata.url }}{{ page.url }}"
+  }
+}
+</script>

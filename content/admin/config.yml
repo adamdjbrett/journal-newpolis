@@ -1,0 +1,226 @@
+backend:
+  name: github
+  repo: adamdjbrett/journal-newpolis
+  branch: main
+  base_url: https://jcrt-auth.adam.workers.dev
+  auth_endpoint: auth
+  local_backend: true
+
+media_folder: "public/img"
+public_folder: "/img"
+
+editor:
+  preview: false
+
+collections:
+  - name: "metadata"
+    label: "Site Metadata"
+    format: "yaml"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "_data/metadata.yaml"
+        label: "Global Settings"
+        name: "metadata"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
+          - { label: "Language", name: "language", widget: "string" }
+          - { label: "Locale", name: "locale", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Email Contact", name: "email", widget: "string" }
+          - { label: "Favicon", name: "favicon", widget: "image" }
+          - { label: "Default Image", name: "image", widget: "image" }
+          - label: "Social Media Links"
+            name: "metasocial"
+            widget: "object"
+            fields:
+              - { label: "Twitter URL", name: "twitter", widget: "string" }
+              - { label: "Twitter Username", name: "tweettwitteruser", widget: "string" }
+              - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "Table of Content Label", name: "table_of_content", widget: "string" }          
+          - label: "UI Widgets"
+            name: "widget"
+            widget: "object"
+            fields:
+              - { label: "Latest Post Heading", name: "lastest_post", widget: "string" }
+              - label: "Archive Section"
+                name: "archive"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+                  - { label: "Show Archive Section", name: "show", widget: "boolean" }
+                  - { label: "Button Text", name: "button_text", widget: "string" }
+          - label: "Hero Content"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Hero Title", name: "title", widget: "string" }
+              - { label: "Hero Description", name: "description", widget: "text" }
+              - { label: "Hero Image 1", name: "image1", widget: "image" }
+              - { label: "Hero Image 2", name: "image2", widget: "image" }
+              - { label: "Hero Image 3", name: "image3", widget: "image" }
+          - label: "Navigation Menu"
+            name: "navbar"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Link Title", name: "title", widget: "string" }
+              - { label: "Link URL", name: "url", widget: "string" }
+          - label: "Footer Settings"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Footer Info", name: "info", widget: "string" }
+              - { label: "Copyright Text", name: "text", widget: "string" }
+
+  - name: "editors_list"
+    label: "Editorial Board"
+    files:
+      - file: "_data/editors.yaml"
+        label: "Manage Editors"
+        name: "editors_data"
+        fields:
+          - label: "Editor Members"
+            name: "list"
+            widget: "list"
+            fields:
+              - { label: "Full Name", name: "name", widget: "string" }
+              - { label: "Role/Position", name: "role", widget: "string" }
+              - { label: "Email Address", name: "email", widget: "string" }
+              - { label: "Affiliation/University", name: "affiliation", widget: "string" }
+              - { label: "Profile Image", name: "image", widget: "image" }
+
+  - name: "pages"
+    label: "Static Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Permalink", name: "permalink", widget: "string", hint: "Eg: /about/" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - label: "Author"
+        name: "authors"
+        widget: "relation"
+        collection: "authors"
+        search_fields: ["name"]
+        value_field: "key"
+        display_fields: ["name"]
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  
+  - name: "authors"
+    label: "Authors"
+    folder: "content/authors"
+    create: true
+    extension: "md"
+    slug: "{{slug}}"
+    identifier_field: "name"
+    format: "frontmatter"
+    fields:
+      - { label: "Full Name", name: "name", widget: "string" }
+      - { label: "Key/Slug", name: "key", widget: "string", hint: "Manual slug, Eg: fernando-gomez-herrero" }
+      - { label: "Organization", name: "organization", widget: "string" }
+      - { label: "Biography", name: "bio", widget: "markdown" }
+      - { label: "Profile Image", name: "image", widget: "image", required: false }
+      - label: "Social Links"
+        name: "social"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
+          - { label: "Icon Class", name: "icon", widget: "string", default: "fa-solid fa-link" }
+
+  - name: "archives"
+    label: "Archives (Issues)"
+    folder: "content/archives"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    nested: { depth: 2 }
+    path: "{{volume}}.{{issue}}/{{slug}}"
+    summary: "V{{volume}} I{{issue}} | {{title}}"
+    view_groups:
+      - label: "Volume"
+        field: "volume"
+      - label: "Issue"
+        field: "issue"    
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "archives.njk" }
+      - { label: "Article ID/Number", name: "id", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Volume", name: "volume", widget: "string"}
+      - { label: "Issue", name: "issue", widget: "string" }
+      - { label: "Season", name: "season", widget: "string" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - label: "Authors"
+        name: "authors"
+        widget: "relation"
+        collection: "authors"
+        multiple: true
+        search_fields: ["name"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+      - { label: "PDF File", name: "pdf", widget: "file", file_extensions: ["pdf"] }
+      - { label: "Citation File (.ris)", name: "citation_file", widget: "file", file_extensions: ["ris"], required: false }
+      - { label: "Body Content", name: "body", widget: "markdown", required: false }
+
+  - name: "setup"
+    label: "Page Setup & SEO"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/page-setup/archives.md"
+        label: "Archives Index Page"
+        name: "archive_index"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/archives/" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/archive-list.njk" }
+      - file: "content/page-setup/authors.md"
+        label: "Authors Index Page"
+        name: "authors_index"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/authors/" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/author-list.njk" }
+      - file: "content/page-setup/editors.md"
+        label: "Editors Page"
+        name: "editors_index"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/editors/" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/editor.njk" }
+      - file: "content/page-setup/search.md"
+        label: "Search Page"
+        name: "search_page"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/search/" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.njk" }

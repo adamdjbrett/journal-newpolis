@@ -1,55 +1,92 @@
 ---
 layout: layouts/base.njk
 ---
-<style>
-  .author p, .author li {
-    margin-bottom: 0.3rem !important;
-  }
-  .author h1, .author h2 {
-    margin-top: 1.5rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-  .author-bio {
-    margin-bottom: 1rem !important;
-  }
-</style>
+<article class="author-profile container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <header class="author-header d-flex align-items-center mb-5 pb-5 border-bottom">
+                <div class="author-avatar me-md-5 me-4">
+                    {% set avatarUrl = image or "https://ui-avatars.com/api/?name=" ~ (name or title) | urlencode ~ "&background=000&color=fff&size=150" %}
+                    <img src="{{ avatarUrl }}" alt="{{ name or title }}" 
+                         class="rounded-circle border border-4 border-white shadow-sm" 
+                         width="150" height="150" style="object-fit: cover;">
+                </div>
+                <div class="author-info">
+                    <h1 class="display-4 serif fw-bold mb-2">{{ name or title }}</h1>
+                    {% if organization %}
+                        <p class="h5 serif italic text-secondary mb-3">{{ organization }}</p>
+                    {% endif %}
+                    
+                    {% if social and social.length %}
+                        <div class="author-social d-flex gap-3">
+                            {%- for s in social %}
+                                <a href="{{ s.url }}" class="small text-dark fw-bold text-uppercase text-decoration-none border-bottom border-2 border-dark pb-1" style="letter-spacing: 1px;">
+                                    {{ s.title }}
+                                </a>
+                            {%- endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </header>
 
-<article class="author">
-  <h1>{{ name or title }}</h1>
-  {% if organization %}<p class="author-org"><em>{{ organization }}</em></p>{% endif %}
-  {% if bio %}<div class="author-bio">{{ bio | safe }}</div>{% endif %}
+            <div class="row">
+                <div class="col-md-5 pe-md-5 mb-5">
+                    <h2 class="h6 text-muted text-uppercase fw-bold mb-4 letter-spacing-2">About the Author</h2>
+                    {% if bio %}
+                        <div class="author-bio serif" style="font-size: 1.1rem; line-height: 1.8; color: #444;">
+                            {{ bio | safe }}
+                        </div>
+                    {% else %}
+                        <p class="text-muted italic small">No biography available.</p>
+                    {% endif %}
+                </div>
 
-  {% if social and social.length %}
-  <h2>Links</h2>
-  <ul>
-    {%- for s in social %}
-      <li>
-        <a href="{{ s.url }}">{{ s.title }}</a>
-      </li>
-    {%- endfor %}
-  </ul>
-  {% endif %}
+                <div class="col-md-7 border-start-md">
+                    <h2 class="h6 text-muted text-uppercase fw-bold mb-4 letter-spacing-2">Published Works</h2>
+                    
+                    {% set akey = key or page.fileSlug %}
+                    {% set archiveItems = collections.all | byFolder('content/archives') %}
+                    {% set hasAny = false %}
 
-  {% set akey = key or page.fileSlug %}
-  {% set archiveItems = collections.all | byFolder('content/archives') %}
-  {% set hasAny = false %}
-  
-  <h2>Articles by {{ name or title }}</h2>
-  <ul>
-    {%- for p in archiveItems %}
-      {%- if p.data.authors -%}
-        {%- set keys = p.data.authors | authorsToArray -%}
-        {%- if akey in keys -%}
-          {%- set hasAny = true -%}
-          <li>
-            <a href="{{ p.url }}">{{ p.data.title }}</a>
-          </li>
-        {%- endif -%}
-      {%- endif -%}
-    {%- endfor %}
-  </ul>
+                    <div class="author-articles">
+                        {%- for p in archiveItems %}
+                            {%- if p.data.authors -%}
+                                {%- set keys = p.data.authors | authorsToArray -%}
+                                {%- if akey in keys -%}
+                                    {%- set hasAny = true -%}
+                                    <div class="article-item mb-4 pb-4 border-bottom-dashed">
+                                        <a href="{{ p.url }}" class="h5 serif text-dark text-decoration-none d-block mb-1 hover-underline fw-bold">
+                                            {{ p.data.title }}
+                                        </a>
+                                        <div class="small text-muted text-uppercase letter-spacing-1">
+                                            {{ p.date | readableDate }}
+                                        </div>
+                                    </div>
+                                {%- endif -%}
+                            {%- endif -%}
+                        {%- endfor %}
 
-  {% if not hasAny %}
-    <p><em>No articles found for this author yet.</em></p>
-  {% endif %}
+                        {% if not hasAny %}
+                            <div class="p-4 bg-light text-center border">
+                                <p class="text-muted italic mb-0">No articles published under this profile yet.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </article>
+
+<style>
+    .serif { font-family: 'Georgia', serif; }
+    .italic { font-style: italic; }
+    .letter-spacing-1 { letter-spacing: 1px; }
+    .letter-spacing-2 { letter-spacing: 2px; }
+    .border-bottom-dashed { border-bottom: 1px dashed #dee2e6; }
+    .hover-underline:hover { text-decoration: underline !important; }
+    
+    @media (min-width: 768px) {
+        .border-start-md { border-left: 1px solid #dee2e6; padding-left: 3rem; }
+    }
+</style>
