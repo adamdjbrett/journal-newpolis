@@ -1,5 +1,17 @@
 ---
 layout: layouts/base.njk
 ---
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <header class="mb-5 text-center">
+                <h1 class="display-4 serif fw-bold">{{ title }}</h1>
+                <hr class="w-25 mx-auto border-2 opacity-100">
+            </header>
 
-{{ content | safe }}
+            <article class="page-content bg-white p-4 p-md-5 shadow-sm border rounded">
+                {{ content | safe }}
+            </article>
+        </div>
+    </div>
+</main>

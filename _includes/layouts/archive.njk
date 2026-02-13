@@ -1,22 +1,31 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="archive">
-  <header class="archive-header">
-    <h1>{{ title or page.fileSlug | title }}</h1>
+<article class="archive container my-5">
+  <header class="archive-header pb-4 mb-5 border-bottom">
+    <h1 class="display-4 serif fw-bold mb-3">{{ title or page.fileSlug | title }}</h1>
+    
     {% if subtitle %}
-      <p class="archive-subtitle">{{ subtitle }}</p>
+      <p class="archive-subtitle lead text-secondary serif italic mb-4" style="font-style: italic;">{{ subtitle }}</p>
     {% endif %}
+
     {% if image %}
-      <figure class="archive-image">
-        <img eleventy:ignore src="{{ image }}" alt="{{ (description or subtitle or title) | escape }}">
+      <figure class="archive-image my-4">
+        <img eleventy:ignore src="{{ image }}" 
+             alt="{{ (description or subtitle or title) | escape }}"
+             class="img-fluid border shadow-sm w-100" 
+             style="max-height: 500px; object-fit: cover;">
       </figure>
     {% endif %}
+
     {% if description %}
-      <div class="archive-description">{{ description | markdownify | safe }}</div>
+      <div class="archive-description bg-light p-4 border-start border-dark border-4 serif text-secondary small mb-4">
+        <strong class="text-dark d-block mb-2 small fw-bold text-uppercase">Abstract</strong>
+        {{ description | markdownify | safe }}
+      </div>
     {% endif %}
-    <p class="archive-meta">
-      {# Display volume, issue, season, year in a horizontal line #}
+
+    <p class="archive-meta small text-muted text-uppercase fw-bold letter-spacing-1">
       {% if volume %}Vol. {{ volume }}{% endif %}
       {% if volume and (issue or Season or Year) %} · {% endif %}
       {% if issue %}No. {{ issue }}{% endif %}
@@ -26,23 +35,53 @@ layout: layouts/base.njk
     </p>
   </header>
 
-  {{ content | safe }}
+  <div class="archive-content serif px-md-5 mb-5 mx-auto" style="max-width: 900px;">
+    {{ content | safe }}
+  </div>
 
-  {# Automatically list sibling entries for issue index pages #}
   {% if page.inputPath and page.inputPath.endsWith('/index.md') %}
     {% set folder = page.inputPath | replace('/index.md', '/') %}
     {% set entries = collections.all | byFolder(folder) | sortByData('id') %}
+    
     {% if entries and entries.length %}
-      <h2>Contents</h2>
-      <ol>
-      {%- for item in entries %}
-        <li>
-          
-          <a href="{{ item.url }}">{{ item.data.title }}</a>
-          {%- if item.data.authors %} <em>— {{ item.data.authors | authorsToLinks(collections.authors) | safe }}</em>{% endif -%}
-        </li>
-      {%- endfor %}
-      </ol>
+      <section class="archive-contents mt-5 pt-5 border-top">
+        <h2 class="serif fw-bold mb-4">In This Issue</h2>
+        <div class="list-group list-group-flush">
+          {%- for item in entries %}
+            <div class="list-group-item px-0 py-3 bg-transparent border-bottom-dashed">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <h4 class="h5 mb-1">
+                  <a href="{{ item.url }}" class="text-decoration-none text-dark hover-underline">{{ item.data.title }}</a>
+                </h4>
+                <span class="text-muted small">#{{ item.data.id }}</span>
+              </div>
+              
+              {%- if item.data.authors %} 
+                <div class="small text-secondary mt-1">
+                  <em>— {{ item.data.authors | authorsToLinks(collections.authors) | safe }}</em>
+                </div>
+              {% endif -%}
+            </div>
+          {%- endfor %}
+        </div>
+      </section>
     {% endif %}
   {% endif %}
 </article>
+
+<style>
+  .serif { font-family: 'Georgia', serif; }
+  .letter-spacing-1 { letter-spacing: 1px; }
+  .border-bottom-dashed { border-bottom: 1px dashed #dee2e6 !important; }
+  .archive-content p { line-height: 1.8; margin-bottom: 1.6rem; font-size: 1.15rem; }
+  .hover-underline:hover { text-decoration: underline !important; }
+  .archive-contents a[href*="/authors/"] { 
+    color: #6c757d; 
+    text-decoration: none; 
+    transition: color 0.2s;
+  }
+  .archive-contents a[href*="/authors/"]:hover { 
+    color: #000; 
+    text-decoration: underline; 
+  }
+</style>

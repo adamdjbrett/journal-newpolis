@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+---
+<main class="container my-5">
+    <header class="mb-5 pb-3 border-bottom">
+        <h1 class="display-5 serif fw-bold">{{ title }}</h1>
+        <p class="lead text-secondary">{{ description }}</p>
+    </header>
+
+    <div class="row g-4">
+        {% for issue in collections.archivesIndex | reverse %}
+        <div class="col-md-6 col-lg-4">
+            <article class="archive-card h-100 shadow-sm border bg-white d-flex flex-column">
+                
+                {% if issue.data.image %}
+                <div class="position-relative">
+                    <img eleventy:ignore src="{{ issue.data.image }}" 
+                         class="card-img-top" 
+                         alt="{{ issue.data.title }}"
+                         style="height: 200px; object-fit: cover;">
+                    <span class="badge bg-dark position-absolute top-0 start-0 m-3 rounded-0 px-3">
+                        VOL. {{ issue.data.volume }}
+                    </span>
+                </div>
+                {% endif %}
+
+                <div class="card-body p-4">
+                    <div class="text-muted small fw-bold text-uppercase mb-2">
+                        Issue {{ issue.data.issue }} &middot; 
+                        {{ issue.data.season or issue.data.Season }} {{ issue.data.year or issue.data.Year }}
+                    </div>
+                    
+                    <h3 class="h5 serif mb-3">
+                        <a href="{{ issue.url }}" class="text-decoration-none text-dark stretched-link">
+                            {{ issue.data.title or issue.url }}
+                        </a>
+                    </h3>
+                    
+                    {% if issue.data.description %}
+                    <p class="small text-secondary mb-2">
+                        {{ issue.data.description | truncate(110) }}
+                    </p>
+                    {% endif %}
+                    {% if issue.data.authors %}
+                    <div class="small text-muted italic">
+                        <em class="fst-normal">— {{ issue.data.authors | authorsToLinks(collections.authors) | safe }}</em>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer bg-transparent border-0 p-4 pt-0 mt-auto">
+                    <div class="d-flex align-items-center justify-content-between border-top pt-3 text-muted">
+                        <span class="small fw-bold text-uppercase">View Details</span>
+                        <span class="bi bi-arrow-right"></span>
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <p class="text-muted italic">No issues found.</p>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+<style>
+    .serif { font-family: 'Georgia', serif; }
+    .archive-card { transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+    .archive-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important; }
+    .stretched-link::after { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; content: ""; }
+    .archive-card a:not(.stretched-link) { position: relative; z-index: 2; }
+</style>

@@ -1,0 +1,167 @@
+---
+layout: layouts/base.njk
+---
+<main class="container my-5">
+<div class="col-md-12 p-3">
+<h2 class="fw-bold">{{metadata.widget.lastest_post}}</h2>
+</div>
+
+{% if pagination.pageNumber == 0 %}
+    {% set latestPost = posts[0] %}
+    <section class="latest-featured row g-0 mb-5 shadow-sm border">
+        <div class="col-md-6 featured-img-half" 
+             style="background-image: url('{{ latestPost.data.image or metadata.image }}'); min-height: 400px; background-size: cover; background-position: center;">
+        </div>
+        <div class="col-md-6 featured-content p-5 d-flex flex-column justify-content-center bg-white">
+            <span class="text-uppercase text-muted small fw-bold mb-2">Newest Publication</span>
+            <h2 class="display-6 serif fw-bold mb-3">
+                <a href="{{ latestPost.url }}" class="text-decoration-none text-dark">{{ latestPost.data.title }}</a>
+            </h2>
+            <p class="text-secondary mb-4">
+                {{ latestPost.data.description | truncate(160) }}
+            </p>           
+            <div class="author-box border-0 pt-0 d-flex align-items-center">
+                {% if latestPost.data.authors %}
+                    {% set authorObj = collections.authors | getAuthorObj(latestPost.data.authors) %}
+                    {% set authorName = authorObj.data.name or latestPost.data.authors %}
+                    {% set authorImg = authorObj.data.image %}
+                {% else %}
+                    {% set authorName = "Admin" %}
+                    {% set authorImg = null %}
+                {% endif %}
+                {% if authorImg %}
+                    <img src="{{ authorImg }}" class="author-img rounded-circle me-2" alt="{{ authorName }}" width="40" height="40" style="object-fit: cover;">
+                {% else %}
+                    <img src="https://ui-avatars.com/api/?name={{ authorName | urlencode }}&background=000&color=fff" class="author-img rounded-circle me-2" alt="{{ authorName }}" width="40">
+                {% endif %}
+               <span class="small">By <strong>{{ authorName }}</strong> &middot; {{ latestPost.date | readableDate }}</span>
+            </div>
+            <a href="{{ latestPost.url }}" class="btn btn-outline-dark mt-4 btn-sm">Read More</a>
+        </div>
+    </section>
+{% endif %}
+    
+   {% set displayPosts = posts.slice(1) 
+    if pagination.pageNumber == 0 else posts %}
+
+<div class="row g-4">
+    {% for post in displayPosts %}
+    <div class="col-md-6">
+        <div class="news-card h-100 shadow-sm border">
+            <img src="{{ post.data.image or metadata.image }}" 
+            loading="lazy" class="card-fluid" 
+            alt="{{ post.data.title }}" 
+            style="height: 250px; object-fit: cover;">
+            <div class="card-body p-4">
+                <span class="small text-muted text-uppercase fw-bold">
+                    {{ post.data.tags[1] or "Article" }}</span>
+                <h3 class="card-title mt-2 serif">
+                    <a href="{{ post.url }}" 
+                    class="text-decoration-none text-dark">{{ post.data.title }}</a>
+                </h3>
+                <p class="card-text small text-secondary">
+                    {{ post.data.description | truncate(100) }}
+                </p>
+                <div class="author-box mt-3 pt-3 border-top d-flex align-items-center">
+                    {% if post.data.authors %}
+                        {% set authorObj = collections.authors | getAuthorObj(post.data.authors) %}
+                        {% set authorName = authorObj.data.name or post.data.authors %}
+                        {% set authorImg = authorObj.data.image %}
+                    {% else %}
+                        {% set authorName = "Admin" %}
+                        {% set authorImg = null %}
+                    {% endif %}
+
+                    {% if authorImg %}
+                        <img src="{{ authorImg }}" class="author-img rounded-circle me-2" alt="{{ authorName }}"  width="25" height="25" style="width: 25px; height: 25px; object-fit: cover; flex-shrink: 0;">
+                    {% else %}
+                        <img src="https://ui-avatars.com/api/?name={{ authorName | urlencode }}&background=000&color=fff" class="author-img rounded-circle me-2" alt="{{ authorName }}" width="25" height="25" style="width: 25px; height: 25px; object-fit: cover; flex-shrink: 0;">
+                    {% endif %}
+                    <span class="date-text small text-muted"><strong>{{ authorName }}</strong> &middot; {{ post.date | readableDate }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+    {% if pagination.href.previous or pagination.href.next %}
+    <nav class="pagination mt-5 d-flex justify-content-between align-items-center border-top pt-4">
+        {% if pagination.href.previous %}
+            <a href="{{ pagination.href.previous }}" class="btn btn-dark btn-sm">← Newer Posts</a>
+        {% else %}
+            <span></span>
+        {% endif %}
+
+        <span class="small text-muted text-uppercase">Page {{ pagination.pageNumber + 1 }}</span>
+
+        {% if pagination.href.next %}
+            <a href="{{ pagination.href.next }}" class="btn btn-dark btn-sm">Older Posts →</a>
+        {% else %}
+            <span></span>
+        {% endif %}
+    </nav>
+    {% endif %}
+
+{% if metadata.widget.show_archives %}
+{% if pagination.pageNumber == 0 %}
+<div class="row g-4 mb-5 mt-5 border-top">
+    <div class="col-md-12 p-3">
+<h2 class="fw-bold">{{metadata.widget.archive.title}}</h2>
+</div>
+    {% for archive in collections.archivesIndex | reverse %}
+    <div class="col-md-6">
+        <div class="archive-card h-100 p-4 border bg-light d-flex flex-column justify-content-between shadow-sm" style="border-left: 5px solid #000 !important;">
+            <div>
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge bg-dark rounded-0 px-3 py-2">Vol. {{ archive.data.volume }} No. {{ archive.data.issue }}</span>
+                    <span class="text-muted small fw-bold">{{ archive.data.season | upper }} {{ archive.data.year }}</span>
+                </div>
+                <h3 class="serif h4 mb-3">
+                    <a href="{{ archive.url }}" class="text-decoration-none text-dark">{{ archive.data.title }}</a>
+                </h3>
+                <p class="text-secondary small mb-4 italic" style="font-style: italic;">
+                    {{ archive.data.description | safe | truncate(120) }}
+                </p>
+            </div>
+            
+            <div class="d-flex align-items-center pt-3 border-top">
+                {% if archive.data.authors %}
+                    {% set authorObj = collections.authors | getAuthorObj(archive.data.authors) %}
+                    {% set authorName = authorObj.data.name or archive.data.authors %}
+                    {% set authorImg = authorObj.data.image %}
+                {% else %}
+                    {% set authorName = "Admin" %}
+                    {% set authorImg = null %}
+                {% endif %}
+
+                {% if authorImg %}
+    <img src="{{ authorImg }}" class="rounded-circle me-2" alt="{{ authorName }}" width="25" height="25" style="width: 25px; height: 25px; object-fit: cover; flex-shrink: 0;">
+{% else %}
+    <img src="https://ui-avatars.com/api/?name={{ authorName | urlencode }}&background=333&color=fff" class="rounded-circle me-2" alt="{{ authorName }}" width="25" height="25" style="width: 25px; height: 25px; flex-shrink: 0;">
+{% endif %}
+                
+                <div class="flex-grow-1">
+                    <p class="m-0 small fw-bold text-dark">{{ authorName }}</p>
+                </div>
+
+                <div class="btn-group">
+                    <a href="{{ archive.data.pdf }}" class="btn btn-sm btn-dark rounded-0 px-3" target="_blank">PDF</a>
+                    {% if archive.data.citation_file %}
+                    <a href="{{ archive.data.citation_file }}" class="btn btn-sm btn-outline-dark rounded-0" download>RIS</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+    <div class="text-center mt-4">
+        <a href="/archives/" class="btn btn-outline-dark 
+        text-decoration-none rounded-0 px-4 fw-bold">{{metadata.widget.archive.button_text}}</a>
+    </div>
+{% endif %}
+{% endif %}
+
+</main>

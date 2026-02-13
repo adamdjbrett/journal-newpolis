@@ -1,24 +1,16 @@
-<footer class="footer-grid-container">
-    <div class="footer-grid">        
-        <div class="footer-col footer-info">
-            <h3>{{metadata.footer.nav1.title}}</h3>
-            {% for t in metadata.footer.nav1.info %}<p>{{t.text}}</p>{% endfor %}
-            <ul>{% for k in metadata.footer.nav1.list %}<li><a href="{{k.url}}">{{k.nav}}</a></li>{% endfor %}</ul>
-        </div>
-        <div class="footer-col footer-links">
-            <h3>{{metadata.footer.nav2.title}}</h3>
-            <ul>
-                {% for j in metadata.footer.nav2.list %}<li><a href="{{j.url}}">{{j.nav}}</a></li>{% endfor %}
-            </ul>
-        </div>
-        <div class="footer-col footer-services">
-            <h3>{{metadata.footer.nav3.title}}</h3>
-            <ul>
-              {% year %} {% for z in metadata.footer.nav3.list %}<li><p>{{z.nav}}<br/><a href="{{z.url}}"><small>{{z.text}}</small></a></p></li>{% endfor %}
-            </ul>
-        </div>        
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; {{metadata.footer.copyrights}} <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a> maintained by <a href="https://adamdjbrett.com">Adam DJ Brett</a>.</p>
+<footer class="text-center py-5">
+    <div class="container">
+        <p class="small">
+            {{ metadata.footer.text }}
+        </p>
+        <p class="small fw-bold border-top border-secondary pt-3 d-inline-block text-uppercase" 
+           style="letter-spacing: 2px; color: #666;">
+            <a href="{{metadata.url}}" class="text-white" >{{ metadata.footer.info }}</a>
+            <br/>
+            <small>
+                built with <a class="text-white" href="https://11ty.dev" target="_blank">{{ eleventy.generator }}</a> 
+                | managed by <a class="text-white" href="https://adamdjbrett.com" target="_blank">Adam DJ Brett</a>
+            </small>
+        </p>
     </div>
 </footer>

@@ -1,38 +1,75 @@
 ---
 layout: layouts/base.njk
 ---
-{# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
 <style>{% include "node_modules/prismjs/themes/prism-okaidia.css" %}</style>
 <style>{% include "css/prism-diff.css" %}</style>
 
-<p>Posted on: <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></p>
+<article class="post container my-5">
+    <header class="post-header mb-5 pb-4 border-bottom text-center">
+        {% if tags.length > 0 %}
+        <div class="mb-3">
+            {%- for tag in tags | filterTagList %}
+                <a href="/tags/{{ tag | slugify }}/" class="badge bg-light text-dark text-decoration-none border px-3 py-2 text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 1px;">{{ tag }}</a>
+            {%- endfor %}
+        </div>
+        {% endif %}
 
-{{ content | safe }}
+        <h1 class="display-4 serif fw-bold mb-3">{{ title }}</h1>
+        
+        <div class="post-meta text-muted small serif">
+            <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+            {% if authors %}
+                <span class="mx-2">&middot;</span>
+                <span class="fw-bold text-dark">{{ authors | authorsToLinks(collections.authors) | safe }}</span>
+            {% endif %}
+        </div>
+    </header>
+    {% if image %}
+    <figure class="mb-5">
+        <img eleventy:ignore src="{{ image }}" class="img-fluid border shadow-sm w-100" style="max-height: 500px; object-fit: cover;" alt="{{ title }}">
+    </figure>
+    {% endif %}
+    <div class="post-content serif px-md-5 mx-auto mb-5" style="max-width: 800px;">
+        {{ content | safe }}
+    </div>
+    {%- if collections.posts %}
+        {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+        {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 
-{%- if collections.posts %}
-{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+        <nav class="post-footer mt-5 pt-5 border-top">
+            <div class="row g-4 justify-content-between">
+                <div class="col-md-5">
+                    {% if previousPost %}
+                        <div class="small text-muted text-uppercase fw-bold mb-2">Previous Post</div>
+                        <a href="{{ previousPost.url | url }}" class="h5 serif text-dark text-decoration-none d-block hover-underline">
+                            &larr; {{ previousPost.data.title }}
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="col-md-5 text-md-end">
+                    {% if nextPost %}
+                        <div class="small text-muted text-uppercase fw-bold mb-2">Next Post</div>
+                        <a href="{{ nextPost.url | url }}" class="h5 serif text-dark text-decoration-none d-block hover-underline">
+                            {{ nextPost.data.title }} &rarr;
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+          </nav>
+    {%- endif %}
+</article>
 
-{%- if tags.length > 1 or nextPost or previousPost %}
-<hr>
-{%- endif %}
-
-{%- if tags.length > 1 %}
-<p>Tagged with:</p>
-<ul>
-  {%- for tag in tags | filterTagList %}
-  {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-  <li><a href="{{ tagUrl | url }}">{{ tag }}</a></li>
-  {%- endfor %}
-</ul>
-{%- endif %}
-
-{%- if nextPost or previousPost %}
-<p>More posts:</p>
-<ul>
-  {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
-  {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
-</ul>
-{%- endif %}
-
-{%- endif %}
+<style>
+    .serif { font-family: 'Georgia', serif; }
+    .post-content { line-height: 1.8; font-size: 1.2rem; }
+    .post-content p { margin-bottom: 1.6rem; text-align: justify; }
+    .post-content h2, .post-content h3 { margin-top: 2.5rem; font-weight: bold; }
+    .hover-underline:hover { text-decoration: underline !important; }
+    pre[class*="language-"] {
+        padding: 1.5rem;
+        border-radius: 0;
+        margin: 2rem 0;
+    }
+    .post-meta a { color: #212529; text-decoration: none; border-bottom: 1px solid #dee2e6; }
+    .post-meta a:hover { border-bottom-color: #212529; }
+</style>

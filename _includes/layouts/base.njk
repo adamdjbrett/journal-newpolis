@@ -1,24 +1,18 @@
 <!doctype html>
-<html lang="{{ metadata.language }}">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
 {% include "partials/seo.njk" %}
-<style>{% include "css/custom.css" %}</style>
-<style>{% include "node_modules/simpledotcss/simple.min.css" %}</style>
-<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
-<script type="module">{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}</script>
 </head>
 <body>
-<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
-{% include "partials/alert.njk" %}
-{% include "partials/nav.njk" %}
-<main id="main">
-<heading-anchors>
-{{ content | safe }}
-</heading-anchors>
-</main>
+  {% include "partials/header.njk" %}
+  <heading-anchors>
+    <main>
+      {{ content | safe }}
+    </main>
+  </heading-anchors>
 {% include "partials/footer.njk" %}
-<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+<script src="/js/bs.js"></script>
+  <script type="module" src="/js/heading-anchors.js"></script>
 </body>
 </html>

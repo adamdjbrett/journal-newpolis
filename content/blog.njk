@@ -1,10 +1,104 @@
----js
-const eleventyNavigation = {
-	key: "Blog",
-	order: 6
-};
 ---
-<h1>Blog Posts</h1>
+layout: layouts/base.njk
+pagination:
+  data: collections.posts
+  size: 5
+  alias: posts
+  reverse: true
+---
 
-{% set postslist = collections.posts %}
-{% include "postslist.njk" %}
+<main class="container my-5">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h2 class="fw-bold serif border-bottom pb-3">{{ metadata.widget.lastest_post or "Latest Posts" }}</h2>
+        </div>
+    </div>
+    {% if pagination.pageNumber == 0 %}
+        {% set latestPost = posts[0] %}
+        <section class="latest-featured row g-0 mb-5 shadow-sm border overflow-hidden">
+            <div class="col-md-7" 
+                 style="background-image: url('{{ latestPost.data.image or metadata.image }}'); min-height: 450px; background-size: cover; background-position: center;">
+            </div>
+            <div class="col-md-5 featured-content p-5 d-flex flex-column justify-content-center bg-white">
+                <span class="text-uppercase text-muted small fw-bold mb-2 letter-spacing-1">Featured Publication</span>
+                <h2 class="display-6 serif fw-bold mb-3">
+                    <a href="{{ latestPost.url }}" class="text-decoration-none text-dark">{{ latestPost.data.title }}</a>
+                </h2>
+                <p class="text-secondary mb-4">
+                    {{ latestPost.data.description | truncate(160) }}
+                </p>           
+                
+                <div class="author-box d-flex align-items-center mb-4">
+                    {% set authorObj = collections.authors | getAuthorObj(latestPost.data.authors) %}
+                    {% set authorName = authorObj.data.name if authorObj else (latestPost.data.authors or "Admin") %}
+                    {% set authorImg = authorObj.data.image if authorObj else "https://ui-avatars.com/api/?name=" ~ authorName | urlencode ~ "&background=000&color=fff" %}
+                    
+                    <img src="{{ authorImg }}" class="rounded-circle me-3" width="45" height="45" style="object-fit: cover; border: 2px solid #eee;">
+                    <div class="small">
+                        <div class="fw-bold text-dark">{{ authorName }}</div>
+                        <div class="text-muted">{{ latestPost.date | readableDate }}</div>
+                    </div>
+                </div>
+                <a href="{{ latestPost.url }}" class="btn btn-dark rounded-0 px-4">Read Article</a>
+            </div>
+        </section>
+    {% endif %}
+    <div class="row g-4">
+        {% for post in posts %}
+            {% if not (pagination.pageNumber == 0 and loop.first) %}
+            <div class="col-md-6 col-lg-4">
+                <article class="news-card h-100 shadow-sm border bg-white d-flex flex-column">
+                    <img src="{{ post.data.image or metadata.image }}" 
+                         loading="lazy" class="w-100" 
+                         alt="{{ post.data.title }}" 
+                         style="height: 220px; object-fit: cover;">
+                    
+                    <div class="card-body p-4">
+                        <span class="small text-muted text-uppercase fw-bold">{{ post.data.tags[1] or "General" }}</span>
+                        <h3 class="h5 mt-2 serif fw-bold">
+                            <a href="{{ post.url }}" class="text-decoration-none text-dark">{{ post.data.title }}</a>
+                        </h3>
+                        <p class="small text-secondary mb-4">
+                            {{ post.data.description | truncate(90) }}
+                        </p>
+                        
+                        <div class="author-box mt-auto pt-3 border-top d-flex align-items-center">
+                            {% set postAuthor = collections.authors | getAuthorObj(post.data.authors) %}
+                            {% set pAuthorName = postAuthor.data.name if postAuthor else (post.data.authors or "Admin") %}
+                            {% set pAuthorImg = postAuthor.data.image if postAuthor else "https://ui-avatars.com/api/?name=" ~ pAuthorName | urlencode ~ "&background=000&color=fff" %}
+                            
+                            <img src="{{ pAuthorImg }}" class="rounded-circle me-2" width="30" height="30" style="object-fit: cover;">
+                            <span class="small text-muted"><strong>{{ pAuthorName }}</strong> &middot; {{ post.date | readableDate }}</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% if pagination.href.previous or pagination.href.next %}
+    <nav class="pagination mt-5 d-flex justify-content-between align-items-center border-top pt-4">
+        <div>
+            {% if pagination.href.previous %}
+                <a href="{{ pagination.href.previous }}" class="btn btn-outline-dark rounded-0 btn-sm">← Newer</a>
+            {% endif %}
+        </div>
+
+        <span class="small text-muted fw-bold">PAGE {{ pagination.pageNumber + 1 }}</span>
+
+        <div>
+            {% if pagination.href.next %}
+                <a href="{{ pagination.href.next }}" class="btn btn-outline-dark rounded-0 btn-sm">Older →</a>
+            {% endif %}
+        </div>
+    </nav>
+    {% endif %}
+</main>
+
+<style>
+    .serif { font-family: 'Georgia', serif; }
+    .letter-spacing-1 { letter-spacing: 1px; }
+    .news-card { transition: transform 0.2s; }
+    .news-card:hover { transform: translateY(-5px); }
+    .card-body a:hover { text-decoration: underline; }
+</style>
