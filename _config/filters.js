@@ -158,4 +158,5 @@ export default function(eleventyConfig) {
 
 		return names.join(", ");
 	});
+	
 };
