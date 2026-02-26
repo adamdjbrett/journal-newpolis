@@ -1,10 +1,10 @@
+logo_url: whitestone-logo.png
+
 backend:
-  name: github
+  name: git-gateway
   repo: adamdjbrett/journal-newpolis
   branch: main
-  base_url: https://jcrt-auth.adam.workers.dev
-  auth_endpoint: auth
-  local_backend: true
+
 
 media_folder: "public/img"
 public_folder: "/img"
