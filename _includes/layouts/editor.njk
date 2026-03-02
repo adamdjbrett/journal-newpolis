@@ -3,11 +3,11 @@ layout: layouts/base.njk
 ---
 <main class="container my-5">
     <header class="text-center mb-5 pb-5 border-bottom">
-        <h1 class="display-4 serif fw-bold mb-3">{{ title }}</h1>
+        <h1 class="display-4 serif fw-bold mb-3 p-name">{{ title }}</h1>
         <p class="lead text-secondary serif italic">The scholars and editors behind the publication.</p>
     </header>
 
-    <div class="row g-4">
+    <div class="row g-4 e-content">
         {% for editor in editors.list %}
         <div class="col-md-6 col-lg-4">
             <div class="editor-card h-100 p-4 border bg-white shadow-sm d-flex flex-column align-items-center text-center">

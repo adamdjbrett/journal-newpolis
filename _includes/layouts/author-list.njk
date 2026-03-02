@@ -3,7 +3,7 @@ layout: layouts/base.njk
 ---
 <main class="container my-5">
     <header class="mb-5 pb-3 border-bottom">
-        <h1 class="display-5 serif fw-bold">{{ title }}</h1>
+        <h1 class="display-5 serif fw-bold p-name">{{ title }}</h1>
     </header>
 
     <div class="row g-4">
@@ -18,7 +18,7 @@ layout: layouts/base.njk
                 {%- endif -%}
             {%- endfor -%}
 
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 e-content">
                 <div class="card h-100 border-0 shadow-sm bg-light p-3">
                     <div class="d-flex align-items-center">
                         <div class="flex-shrink-0">

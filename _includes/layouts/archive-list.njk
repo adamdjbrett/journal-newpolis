@@ -3,11 +3,11 @@ layout: layouts/base.njk
 ---
 <main class="container my-5">
     <header class="mb-5 pb-3 border-bottom">
-        <h1 class="display-5 serif fw-bold">{{ title }}</h1>
+        <h1 class="display-5 serif fw-bold p-name">{{ title }}</h1>
         <p class="lead text-secondary">{{ description }}</p>
     </header>
 
-    <div class="row g-4">
+    <div class="row g-4 e-content">
         {% for issue in collections.archivesIndex | reverse %}
         <div class="col-md-6 col-lg-4">
             <article class="archive-card h-100 shadow-sm border bg-white d-flex flex-column">

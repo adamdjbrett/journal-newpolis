@@ -3,7 +3,7 @@ layout: layouts/base.njk
 ---
 <article class="archive container my-5">
   <header class="archive-header pb-4 mb-5 border-bottom">
-    <h1 class="display-4 serif fw-bold mb-3">{{ title or page.fileSlug | title }}</h1>
+    <h1 class="display-4 serif fw-bold mb-3 p-name">{{ title or page.fileSlug | title }}</h1>
     
     {% if subtitle %}
       <p class="archive-subtitle lead text-secondary serif italic mb-4" style="font-style: italic;">{{ subtitle }}</p>
@@ -35,7 +35,7 @@ layout: layouts/base.njk
     </p>
   </header>
 
-  <div class="archive-content serif px-md-5 mb-5 mx-auto" style="max-width: 900px;">
+  <div class="archive-content serif px-md-5 mb-5 mx-auto e-content" style="max-width: 900px;">
     {{ content | safe }}
   </div>
 
@@ -57,7 +57,7 @@ layout: layouts/base.njk
               </div>
               
               {%- if item.data.authors %} 
-                <div class="small text-secondary mt-1">
+                <div class="small text-secondary mt-1 p-author h-card">
                   <em>— {{ item.data.authors | authorsToLinks(collections.authors) | safe }}</em>
                 </div>
               {% endif -%}
