@@ -4,10 +4,10 @@ layout: layouts/base.njk
 <article class="article container my-5">
     
     <header class="article-header pb-4 mb-5 border-bottom">
-        <h1 class="display-4 serif fw-bold mb-3">{{ title }}</h1>
+        <h1 class="display-4 serif fw-bold mb-3 p-name">{{ title }}</h1>
         
         {% if authors %}
-        <div class="article-authors h5 serif text-secondary mb-4">
+        <div class="article-authors h5 serif text-secondary mb-4 p-author h-card">
             {{ authors | authorsToLinks(collections.authors) | safe }}
         </div>
         {% endif %}
@@ -42,7 +42,7 @@ layout: layouts/base.njk
         {% endif %}
     </header>
 
-    <section class="article-content serif px-md-5 mb-5 mx-auto" style="max-width: 850px;">
+    <section class="article-content serif px-md-5 mb-5 mx-auto e-content" style="max-width: 850px;">
         {{ content | safe }}
     </section>
 

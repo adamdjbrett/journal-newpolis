@@ -46,9 +46,9 @@ export default async function(eleventyConfig) {
 
     // Per-page bundles (JS)
     eleventyConfig.addBundle("js", {
-        toFileDirectory: "dist",
-        bundleHtmlContentFromSelector: "script",
-    });
+    toFileDirectory: "dist",
+    bundleHtmlContentFromSelector: "script[data-bundle]", 
+});
 
     // Official plugins
     eleventyConfig.addPlugin(pluginSyntaxHighlight, {

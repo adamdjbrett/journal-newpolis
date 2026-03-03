@@ -4,11 +4,11 @@ layout: layouts/base.njk
 <main class="container my-5">
     <div class="row">
         <div class="col-md-12 p-3">
-            <h2 class="fw-bold">{{ metadata.widget.lastest_post }}</h2>
+            <h2 class="fw-bold p-name">{{ metadata.widget.lastest_post }}</h2>
         </div>
     </div>
 
-    <div class="row g-4">
+    <div class="row g-4 e-content">
         {% for issue in (collections.archivesIndex | reverse).slice(0, 6) %}
         <div class="col-md-6 col-lg-4">
             <article class="archive-card h-100 shadow-sm border bg-white d-flex flex-column position-relative">

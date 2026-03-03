@@ -4,7 +4,8 @@ layout: layouts/base.njk
 <article class="author-profile container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
-            <header class="author-header d-flex align-items-center mb-5 pb-5 border-bottom">
+            <header class="author-header d-flex 
+            align-items-center mb-5 pb-5 border-bottom">
                 <div class="author-avatar me-md-5 me-4">
                     {% set avatarUrl = image or "https://ui-avatars.com/api/?name=" ~ (name or title) | urlencode ~ "&background=000&color=fff&size=150" %}
                     <img src="{{ avatarUrl }}" alt="{{ name or title }}" 
@@ -12,7 +13,7 @@ layout: layouts/base.njk
                          width="150" height="150" style="object-fit: cover;">
                 </div>
                 <div class="author-info">
-                    <h1 class="display-4 serif fw-bold mb-2">{{ name or title }}</h1>
+                    <h1 class="display-4 serif fw-bold mb-2 p-name">{{ name or title }}</h1>
                     {% if organization %}
                         <p class="h5 serif italic text-secondary mb-3">{{ organization }}</p>
                     {% endif %}
@@ -48,7 +49,7 @@ layout: layouts/base.njk
                     {% set archiveItems = collections.all | byFolder('content/archives') %}
                     {% set hasAny = false %}
 
-                    <div class="author-articles">
+                    <div class="author-articles e-content">
                         {%- for p in archiveItems %}
                             {%- if p.data.authors -%}
                                 {%- set keys = p.data.authors | authorsToArray -%}
