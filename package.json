@@ -51,6 +51,6 @@
 		"markdown-it-footnote": "^4.0.0",
 		"markdown-it-table-of-contents": "^1.2.0",
     "simpledotcss": "^2.3.7",
-    "slugify": "^1.6.8"
+    "slugify": "^1.6.9"
   }
 }
