@@ -38,7 +38,7 @@
     "markdown-it": "^14.2.0",
     "markdown-it-attrs": "^4.3.1",
     "prismjs": "^1.30.0",
-    "zod": "^4.3.6",
+    "zod": "^4.4.3",
     "zod-validation-error": "^5.0.0"
   },
   "dependencies": {
