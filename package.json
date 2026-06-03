@@ -25,7 +25,8 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=24",
+    "npm": ">=11.14.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
@@ -44,13 +45,14 @@
   "dependencies": {
     "@zachleat/heading-anchors": "^1.0.5",
     "cheerio": "1.2.0",
-		"pagefind": "^1.5.2",
-		"eleventy-plugin-toc": "^1.1.5",
-		"markdown-it": "^14.2.0",
-		"markdown-it-anchor": "^9.2.0",
-		"markdown-it-footnote": "^4.0.0",
-		"markdown-it-table-of-contents": "^1.2.0",
+    "eleventy-plugin-toc": "^1.1.5",
+    "markdown-it": "^14.2.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-table-of-contents": "^1.2.0",
+    "pagefind": "^1.5.2",
     "simpledotcss": "^2.3.7",
     "slugify": "^1.6.9"
-  }
+  },
+  "packageManager": "npm@11.14.0"
 }
