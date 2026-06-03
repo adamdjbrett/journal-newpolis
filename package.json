@@ -36,7 +36,7 @@
     "cross-env": "^10.1.0",
     "luxon": "^3.7.2",
     "markdown-it": "^14.2.0",
-    "markdown-it-attrs": "^4.3.1",
+    "markdown-it-attrs": "^5.0.0",
     "prismjs": "^1.30.0",
     "zod": "^4.4.3",
     "zod-validation-error": "^5.0.0"
