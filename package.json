@@ -54,5 +54,8 @@
     "simpledotcss": "^2.3.7",
     "slugify": "^1.6.9"
   },
-  "packageManager": "npm@11.14.0"
+  "packageManager": "npm@11.14.0",
+  "overrides": {
+    "undici": "~7.28.0"
+  }
 }
